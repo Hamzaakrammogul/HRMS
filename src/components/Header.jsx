@@ -15,12 +15,12 @@ const Header = () => {
                     <CiSearch size={20} />
                     <input className='bg-dusty outline-none w-2/3' type='text' placeholder='search' />
                 </div>
-                <div className='w-1/4 text-textDusty font-semibold'>
+                <div className='w-1/4 text-textDusty text-lg  font-semibold'>
                     {today}
                 </div>
                 <div className='w-1/3 flex place-content-end space-x-10 items-center'>
                     <div className='text-textDusty'><MdOutlineNotificationsActive size={24} /></div>
-                    <div><h1 className='text-lg text-textDusty'>Hello, {name}! </h1></div>
+                    <div><h1 className='text-lg text-textDusty font-semibold'>Hello, {name}! </h1></div>
                     <div className='w-12 h-12 overflow-hidden rounded-full'><img src={dp} alt='user-picture' /></div>
                 </div>
             </div>

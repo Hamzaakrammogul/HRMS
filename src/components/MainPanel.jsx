@@ -42,7 +42,7 @@ const MainPanel = () => {
                     {/* ______________________________________________________ */}
                     {/* Randering Area */}
 
-                    <div className='w-4/5 bg-white mt-5 rounded-3xl h-screen p-5'>
+                    <div className='w-4/5 bg-white mt-5 rounded-3xl h-screen p-5 overflow-auto'>
                         <Header />
                         <Routes>
                             <Route path='/' element={< Dashboard />} />
