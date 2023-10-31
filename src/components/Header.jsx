@@ -7,7 +7,7 @@ import dp from '../img/dp.png'
 const Header = () => {
     let newDate = new Date()
     const today = dateFormat(newDate, "dddd, dS mmmm  yyyy");
-    let name = "Hamza"
+    let name = "Mr.Hamza"
     return (
         <div className='container mx-auto'>
             <div className='flex justify-between items-center'>
