@@ -28,9 +28,9 @@ const MainPanel = () => {
                         {/* Menu Items */}
                         <div className='mt-10'>
                             <ul>
-                               <NavLink to={'./'}> <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold'> <LuLayoutDashboard size={24} /> Dashboard</li></NavLink>
-                                
-                               <NavLink to={'/employees'}><li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '> <IoMdPerson size={24} /> Employee</li></NavLink> 
+                                <NavLink to={'./'}> <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold'> <LuLayoutDashboard size={24} /> Dashboard</li></NavLink>
+
+                                <NavLink to={'/employees'}><li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '> <IoMdPerson size={24} /> Employee</li></NavLink>
                             </ul>
                             <div className='mt-10 space-y-2' >
                                 <div className='w-11/12 border border-white border-opacity-50' />
