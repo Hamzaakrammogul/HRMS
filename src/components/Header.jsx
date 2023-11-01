@@ -15,7 +15,7 @@ const Header = () => {
                     <CiSearch size={20} />
                     <input className='bg-dusty outline-none w-2/3' type='text' placeholder='search' />
                 </div>
-                <div className='w-1/4 text-textDusty text-lg  font-semibold'>
+                <div className='w-1/4 text-textDusty text-md  font-semibold'>
                     {today}
                 </div>
                 <div className='w-1/3 flex place-content-end space-x-10 items-center'>

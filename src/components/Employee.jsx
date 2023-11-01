@@ -30,7 +30,6 @@ const Employee = () => {
                 <div className='w-1/3'>
 
                 </div>
-
             </div>
 
             {/* purpose of the Dot Red green orange */}
@@ -61,7 +60,7 @@ const Employee = () => {
                 ))}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Employee;

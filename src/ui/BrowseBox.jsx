@@ -70,5 +70,5 @@ export default function BrowseBox() {
                 </div>
             </Listbox>
         </div>
-    )
+    );
 }
