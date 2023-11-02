@@ -23,7 +23,7 @@ export const employeeData = [
         email: 'hamza.akram@techilab.com',
         img: '../img/dp.png',
         empNo: 'Emp-0001',
-        status: 'relieved'
+        status: 'noticePeriod'
     },
     {
         id: 3,
@@ -47,7 +47,7 @@ export const employeeData = [
         email: 'hamza.akram@techilab.com',
         img: '../img/dp.png',
         empNo: 'Emp-0001',
-        status: 'active'
+        status: 'noticePeriod'
     },
     {
         id: 5,
@@ -71,7 +71,7 @@ export const employeeData = [
         email: 'hamza.akram@techilab.com',
         img: '../img/dp.png',
         empNo: 'Emp-0001',
-        status: 'active'
+        status: 'noticePeriod'
     },
     {
         id: 7,

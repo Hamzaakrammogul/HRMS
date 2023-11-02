@@ -8,7 +8,7 @@ import dp from '../img/dp.png'
 
 const Employee = () => {
     return (
-        <div className='contanier mx-auto mt-7 mb-7'>
+        <div className='contanier mx-auto mt-7 mb-7 2xl:mb-0'>
             {/* Headings and button */}
             <div className='flex justify-between items-center'>
                 <div className='flex flex-col space-y-2'>
@@ -21,9 +21,9 @@ const Employee = () => {
             <div className='flex mt-10 justify-between gap-3 '>
                 <div className='flex w-1/3 items-center text-textDusty bg-dusty p-3 space-x-2 rounded-xl'>
                     <CiSearch size={20} />
-                    <input className='bg-dusty outline-none w-2/3' type='text' placeholder='search in employees' />
+                    <input className='bg-dusty outline-none w-2/3' type='search' placeholder='search in employees' />
                 </div>
-                <div className=' flex w-1/3 justify-center bg-dusty rounded-xl  items-center text-sm gap-1'>
+                <div className=' flex w-1/3 justify-center bg-dusty rounded-xl z-10 items-center text-sm gap-1'>
                     <label className='text-md font-semibold pl-2'>Browse</label>
                     <BrowseBox />
                 </div>
@@ -43,10 +43,11 @@ const Employee = () => {
             </div>
 
             {/* Card Render in this div */}
-            <div className='flex mt-2 flex-wrap gap-7'>
+            <div className='flex mt-2 flex-wrap gap-6 ml-4'>
                 {employeeData.map((item) => (
                     <EmployeeCard
                         key={item.id}
+                        id={item.id}
                         Name={item.Name}
                         position={item.position}
                         doj={item.doj}
@@ -64,3 +65,5 @@ const Employee = () => {
 };
 
 export default Employee;
+
+// {`absolute w-4 h-4 -mt-28 ml-2  rounded-full`}

@@ -8,6 +8,8 @@ import Dashboard from './Dashboard';
 import Employee from './Employee';
 import Header from './Header';
 import { NavLink } from 'react-router-dom';
+import EmployeeDetail from './EmployeeDetail';
+
 
 const MainPanel = () => {
     return (
@@ -34,7 +36,7 @@ const MainPanel = () => {
                             </ul>
                             <div className='mt-10 space-y-2' >
                                 <div className='w-11/12 border border-white border-opacity-50' />
-                                <h1 className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '>Logout <LuLogOut /></h1>
+                                <h1 className='flex text-white cursor-pointer text-lg items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '><LuLogOut /> Logout </h1>
                             </div>
                         </div>
                     </div>
@@ -47,6 +49,8 @@ const MainPanel = () => {
                         <Routes>
                             <Route path='/' element={< Dashboard />} />
                             <Route path='/employees' element={<Employee />} />
+                            <Route path='/employee/:id' element={<EmployeeDetail />} />
+
                         </Routes>
                     </div>
                 </div>
