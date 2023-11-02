@@ -1,6 +1,6 @@
 
-
 export const employeeData = [
+    
     {
         id: 1,
         Name: 'Ameer Hamza',
@@ -9,9 +9,11 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: '../../public/img/dp.png',
         empNo: 'Emp-0001',
-        status: 'active'
+        status: 'active',
+        department:'Engineering',
+        salary: '100,000'
     },
     {
         id: 2,
@@ -21,9 +23,13 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: "../../public/img/dp.png",
         empNo: 'Emp-0001',
-        status: 'noticePeriod'
+        status: 'noticePeriod',
+        department:'Engineering',
+        salary: '100,000'
+
+
     },
     {
         id: 3,
@@ -33,9 +39,13 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: '../../public/img/dp.png',
         empNo: 'Emp-0001',
-        status: 'active'
+        status: 'active',
+        department:'Engineering',
+        salary: '100,000'
+
+
     },
     {
         id: 4,
@@ -45,9 +55,13 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: '../../public/img/dp.png',
         empNo: 'Emp-0001',
-        status: 'noticePeriod'
+        status: 'noticePeriod',
+        department:'Engineering',
+        salary: '100,000'
+
+
     },
     {
         id: 5,
@@ -57,9 +71,13 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: '../../public/img/dp.png',
         empNo: 'Emp-0001',
-        status: 'relieved'
+        status: 'relieved',
+        department:'Engineering',
+        salary: '100,000'
+
+
     },
     {
         id: 6,
@@ -69,9 +87,13 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: '../../public/img/dp.png',
         empNo: 'Emp-0001',
-        status: 'noticePeriod'
+        status: 'noticePeriod',
+        department:'Engineering',
+        salary: '100,000'
+
+
     },
     {
         id: 7,
@@ -81,9 +103,13 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: '../../public/img/dp.png',
         empNo: 'Emp-0001',
-        status: 'active'
+        status: 'active',
+        department:'Engineering',
+        salary: '100,000'
+
+
     },
     {
         id: 8,
@@ -93,9 +119,13 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: '../../public/img/dp.png',
         empNo: 'Emp-0001',
-        status: 'relieved'
+        status: 'relieved',
+        department:'Engineering',
+        salary: '100,000'
+
+
     },
     {
         id: 9,
@@ -105,9 +135,13 @@ export const employeeData = [
         doj: '01/05/2022',
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
-        img: '../img/dp.png',
+        img: '../../public/img/dp.png',
         empNo: 'Emp-0001',
-        status: 'active'
+        status: 'active',
+        department:'Engineering',
+        salary: '100,000'
+
+
     },
 
 ]

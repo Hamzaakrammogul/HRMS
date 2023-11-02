@@ -2,7 +2,7 @@ import React from 'react';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { IoMdPerson } from 'react-icons/io';
 import { LuLogOut } from 'react-icons/lu';
-import Dp from '../img/logo.png';
+import Dp from '/img/logo.png';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Employee from './Employee';

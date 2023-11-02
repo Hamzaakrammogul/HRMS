@@ -2,7 +2,7 @@ import React from 'react';
 import { CiSearch } from 'react-icons/ci';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import dateFormat from 'dateformat';
-import dp from '../img/dp.png'
+import dp from '/img/dp.png'
 
 const Header = () => {
     let newDate = new Date()

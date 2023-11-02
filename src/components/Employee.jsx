@@ -4,7 +4,7 @@ import BrowseBox from '../ui/BrowseBox';
 import { CiSearch } from 'react-icons/ci';
 import { employeeData } from '../utils/data.js';
 import EmployeeCard from '../ui/EmployeeCard';
-import dp from '../img/dp.png'
+// import dp from '../../public/img/dp.png'
 
 const Employee = () => {
     return (
@@ -47,16 +47,18 @@ const Employee = () => {
                 {employeeData.map((item) => (
                     <EmployeeCard
                         key={item.id}
-                        id={item.id}
+                        id={item.empNo}
                         Name={item.Name}
                         position={item.position}
                         doj={item.doj}
                         phone={item.phone}
                         email={item.email}
-                        img={dp}
+                        img={item.img}
                         office={item.office}
                         empNo={item.empNo}
                         status={item.status}
+                        department={item.department}
+                        salary={item.salary}
                     />
                 ))}
             </div>
