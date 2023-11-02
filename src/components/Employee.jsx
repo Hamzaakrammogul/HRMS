@@ -4,7 +4,6 @@ import BrowseBox from '../ui/BrowseBox';
 import { CiSearch } from 'react-icons/ci';
 import { employeeData } from '../utils/data.js';
 import EmployeeCard from '../ui/EmployeeCard';
-// import dp from '../../public/img/dp.png'
 
 const Employee = () => {
     return (
