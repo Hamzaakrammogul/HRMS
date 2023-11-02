@@ -13,7 +13,7 @@ const Header = () => {
             <div className='flex justify-between items-center'>
                 <div className='flex w-1/3 items-center text-textDusty bg-dusty p-2 space-x-2 rounded-xl'>
                     <CiSearch size={20} />
-                    <input className='bg-dusty outline-none w-2/3' type='search' placeholder='search' />
+                    <input className='bg-dusty outline-none w-[90%]' type='search' placeholder='search' />
                 </div>
                 <div className='w-1/4 text-textDusty text-md  font-semibold'>
                     {today}

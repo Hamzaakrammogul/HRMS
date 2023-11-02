@@ -21,7 +21,7 @@ const Employee = () => {
             <div className='flex mt-10 justify-between gap-3 '>
                 <div className='flex w-1/3 items-center text-textDusty bg-dusty p-3 space-x-2 rounded-xl'>
                     <CiSearch size={20} />
-                    <input className='bg-dusty outline-none w-2/3' type='search' placeholder='search in employees' />
+                    <input className='bg-dusty outline-none w-[90%]' type='search' placeholder='search in employees' />
                 </div>
                 <div className=' flex w-1/3 justify-center bg-dusty rounded-xl z-10 items-center text-sm gap-1'>
                     <label className='text-md font-semibold pl-2'>Browse</label>
