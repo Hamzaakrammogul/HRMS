@@ -17,7 +17,7 @@ const Employee = () => {
                 <div>  <NewEmployeeBtn /> </div>
             </div>
             {/* Search, fllter and pagination. */}
-            <div className='flex mt-10 justify-between gap-3 '>
+            <div className='flex mt-10 justify-between gap-3'>
                 <div className='flex w-1/3 items-center text-textDusty bg-dusty p-3 space-x-2 rounded-xl'>
                     <CiSearch size={20} />
                     <input className='bg-dusty outline-none w-[90%]' type='search' placeholder='search in employees' />
@@ -67,4 +67,3 @@ const Employee = () => {
 
 export default Employee;
 
-// {`absolute w-4 h-4 -mt-28 ml-2  rounded-full`}

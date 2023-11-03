@@ -9,12 +9,12 @@ import Employee from './Employee';
 import Header from './Header';
 import { NavLink } from 'react-router-dom';
 import EmployeeDetail from './EmployeeDetail';
-
+import EditEmployeeDetails from './EditEmployeeDetails';
 
 const MainPanel = () => {
     return (
         <div className='bg-bgBlue h-screen overflow-y-hidden '>
-            <div className='container mx-auto '>
+            <div className='container mx-auto'>
                 <div className='flex'>
                     {/* Side Navbar */}
                     <div className='w-1/5 mt-5 flex flex-col '>
@@ -50,6 +50,7 @@ const MainPanel = () => {
                             <Route path='/' element={< Dashboard />} />
                             <Route path='/employees' element={<Employee />} />
                             <Route path='/employee/:id' element={<EmployeeDetail />} />
+                            <Route path='/employee/:id/edit-details' element={<EditEmployeeDetails />} />
 
                         </Routes>
                     </div>

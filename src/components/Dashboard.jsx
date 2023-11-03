@@ -1,11 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { employeeData } from '../utils/data';
 import { Button } from '@material-tailwind/react';
 const Dashboard = () => {
+    
     // const { id } = useParams();
 
-     const data = employeeData.filter((obj) => { return (obj.empNo == 'Emp-0001') });
+    const data = employeeData.filter((obj) => { return (obj.empNo == 'Emp-0001') });
 
     return (
         <div className=''>

@@ -24,7 +24,7 @@ export const employeeData = [
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
         img: "/img/dp.png",
-        empNo: 'Emp-0001',
+        empNo: 'Emp-0002',
         status: 'noticePeriod',
         department:'Engineering',
         salary: '100,000'
@@ -40,7 +40,7 @@ export const employeeData = [
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
         img: '/img/dp.png',
-        empNo: 'Emp-0001',
+        empNo: 'Emp-0003',
         status: 'active',
         department:'Engineering',
         salary: '100,000'
@@ -56,7 +56,7 @@ export const employeeData = [
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
         img: '/img/dp.png',
-        empNo: 'Emp-0001',
+        empNo: 'Emp-0004',
         status: 'noticePeriod',
         department:'Engineering',
         salary: '100,000'
@@ -72,7 +72,7 @@ export const employeeData = [
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
         img: '/img/dp.png',
-        empNo: 'Emp-0001',
+        empNo: 'Emp-0005',
         status: 'relieved',
         department:'Engineering',
         salary: '100,000'
@@ -88,7 +88,7 @@ export const employeeData = [
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
         img: '/img/dp.png',
-        empNo: 'Emp-0001',
+        empNo: 'Emp-0006',
         status: 'noticePeriod',
         department:'Engineering',
         salary: '100,000'
@@ -104,7 +104,7 @@ export const employeeData = [
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
         img: '/img/dp.png',
-        empNo: 'Emp-0001',
+        empNo: 'Emp-0007',
         status: 'active',
         department:'Engineering',
         salary: '100,000'
@@ -120,7 +120,7 @@ export const employeeData = [
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
         img: '/img/dp.png',
-        empNo: 'Emp-0001',
+        empNo: 'Emp-0008',
         status: 'relieved',
         department:'Engineering',
         salary: '100,000'
@@ -136,7 +136,7 @@ export const employeeData = [
         phone: '+923200454092',
         email: 'hamza.akram@techilab.com',
         img: '/img/dp.png',
-        empNo: 'Emp-0001',
+        empNo: 'Emp-0009',
         status: 'active',
         department:'Engineering',
         salary: '100,000'

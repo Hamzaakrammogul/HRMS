@@ -2,10 +2,13 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { employeeData } from '../utils/data';
 import { Button } from '@material-tailwind/react';
+import { useNavigate } from 'react-router-dom';
 const EmployeeDetail = () => {
     const { id } = useParams();
 
     const data = employeeData.filter((obj) => { return (obj.empNo == id) });
+
+    const navigate = useNavigate();
 
     return (
         <div className=''>
@@ -68,8 +71,9 @@ const EmployeeDetail = () => {
                 <div>
 
                 </div>
-                <div className={`${data[0].status === "active" ? 'block' : 'hidden'} space-x-2 mt-10`}>
-                    <Button className='bg-bgBlue'>Edit Details</Button>
+                {/* ${data[0].status === "active" ? 'block' : 'hidden'} */}
+                <div className={` space-x-2 mt-10`}>
+                    <Button onClick={()=>navigate(`/employee/${id}/edit-details`)} className='bg-bgBlue'>Edit Details</Button>
                     <Button className='bg-bgBlue'>Delete User</Button>
                 </div>
             </div>
