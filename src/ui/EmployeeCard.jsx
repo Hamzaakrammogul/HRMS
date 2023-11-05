@@ -13,9 +13,9 @@ const EmployeeCard = ({ id, Name, position, office, doj, phone, email, img, empN
                 <div className='flex flex-col relative w-1/3 items-center justify-center mt-2 space-y-2'>
                     <div className=' w-24 h-24 rounded-full overflow-hidden items-center justify-center'>
                         <img src={img} alt='employee-img' />
-                        <span className={`absolute w-4 h-4 -mt-28 ml-2 rounded-full border ${status === 'active' ? 'bg-green-400' : status === 'relieved' ? 'bg-red-500' : status === 'noticePeriod' ? 'bg-orange-400' : ''}`} />
+                        <span className={`absolute w-4 h-4 -mt-28 ml-2 rounded-full border ${status === 'Active' ? 'bg-green-400' : status === 'Relieved' ? 'bg-red-500' : status === 'Notice period' ? 'bg-orange-400' : ''}`} />
                     </div>
-                    <p className={`${status === 'active' ? 'text-green-400' : status === 'relieved' ? 'text-red-500' : status === 'noticePeriod' ? 'text-orange-400' : ''} text-md text-center font-semibold `}>{empNo}</p>
+                    <p className={`${status === 'Active' ? 'text-green-400' : status === 'Relieved' ? 'text-red-500' : status === 'Notice period' ? 'text-orange-400' : ''} text-md text-center font-semibold `}>{empNo}</p>
                 </div>
 
                 {/* Right side */}

@@ -38,7 +38,7 @@ const Employee = () => {
                 <div className='h-3 w-3 rounded-full bg-orange-600' />
                 <div><p>serving notice period</p></div>
                 <div className='h-3 w-3 rounded-full bg-red-600' />
-                <div><p>relieved</p></div>
+                <div><p>Relieved</p></div>
             </div>
 
             {/* Card Render in this div */}

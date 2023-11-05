@@ -69,7 +69,7 @@ const Dashboard = () => {
                 <div>
 
                 </div>
-                <div className={`${data[0].status === "active" ? 'block' : 'hidden'} space-x-2 mt-10`}>
+                <div className={`${data[0].status === "Active" ? 'block' : 'hidden'} space-x-2 mt-10`}>
                     <Button className='bg-bgBlue'>Edit Details</Button>
                 </div>
             </div>

@@ -71,7 +71,7 @@ const EmployeeDetail = () => {
                 <div>
 
                 </div>
-                {/* ${data[0].status === "active" ? 'block' : 'hidden'} */}
+                {/* ${data[0].status === "Active" ? 'block' : 'hidden'} */}
                 <div className={` space-x-2 mt-10`}>
                     <Button onClick={()=>navigate(`/employee/${id}/edit-details`)} className='bg-bgBlue'>Edit Details</Button>
                     <Button className='bg-bgBlue'>Delete User</Button>

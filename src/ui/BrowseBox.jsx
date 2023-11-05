@@ -42,8 +42,8 @@ export default function BrowseBox() {
                             {people.map((person, personIdx) => (
                                 <Listbox.Option
                                     key={personIdx}
-                                    className={({ active }) =>
-                                        `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
+                                    className={({ Active }) =>
+                                        `relative cursor-default select-none py-2 pl-10 pr-4 ${Active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
                                         }`
                                     }
                                     value={person}
