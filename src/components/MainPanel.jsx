@@ -10,8 +10,12 @@ import Header from './Header';
 import { NavLink } from 'react-router-dom';
 import EmployeeDetail from './EmployeeDetail';
 import EditEmployeeDetails from './EditEmployeeDetails';
+import { useNavigate } from 'react-router-dom';
 
 const MainPanel = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div className='bg-bgBlue h-screen overflow-y-hidden '>
             <div className='container mx-auto'>
@@ -30,7 +34,7 @@ const MainPanel = () => {
                         {/* Menu Items */}
                         <div className='mt-10'>
                             <ul>
-                                <NavLink to={'./'}> <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold'> <LuLayoutDashboard size={24} /> Dashboard</li></NavLink>
+                                <NavLink to={'/'}> <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold'> <LuLayoutDashboard size={24} /> Dashboard</li></NavLink>
 
                                 <NavLink to={'/employees'}><li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '> <IoMdPerson size={24} /> Employees</li></NavLink>
                             </ul>
@@ -48,10 +52,9 @@ const MainPanel = () => {
                         <Header />
                         <Routes>
                             <Route path='/' element={< Dashboard />} />
-                            <Route path='/employees' element={<Employee />} />
+                            <Route path='/dashboard/employees' element={<Employee />} />
                             <Route path='/employee/:id' element={<EmployeeDetail />} />
                             <Route path='/employee/:id/edit-details' element={<EditEmployeeDetails />} />
-
                         </Routes>
                     </div>
                 </div>

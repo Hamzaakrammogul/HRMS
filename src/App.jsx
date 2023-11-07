@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainPanel } from './components';
+import { MainPanel, SignUp } from './components';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -7,7 +7,8 @@ function App() {
   return (
 
     <Routes>
-      <Route path='*' element={<MainPanel />} />
+      <Route path='*' element={<SignUp />} />
+      <Route path='/main-panel' element={<MainPanel/>}/>
     </Routes>
 
   );
