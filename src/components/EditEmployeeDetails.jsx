@@ -116,7 +116,7 @@ const PopUp = ({ data, id }) => {
                         </div>
                         {/* ${data[0].status === "Active" ? 'block' : 'hidden'} */}
                         <div className={` space-x-2 mt-10`}>
-                            <Button onClick={() => navigate('/employee/' + id)} className='bg-bgBlue'>submit</Button>
+                            <Button onClick={() => navigate('/main/employee/' + id)} className='bg-bgBlue'>submit</Button>
                         </div>
                     </div>
                 </div>

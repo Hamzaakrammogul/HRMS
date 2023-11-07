@@ -15,7 +15,7 @@ const SignUp = () => {
 
     const navFun = () => {
         if (eValid.current.value === "hamza" && pValid.current.value === "hamza") {
-            navigate('/main-panel')
+            navigate('/main')
         } else {
             console.log('Wrong')
         }

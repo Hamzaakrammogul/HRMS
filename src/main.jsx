@@ -7,10 +7,10 @@ import { ThemeProvider } from "@material-tailwind/react";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* <BrowserRouter> */}
       <ThemeProvider>
         <App />
       </ThemeProvider>
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
   </React.StrictMode>,
 )

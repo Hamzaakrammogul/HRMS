@@ -6,3 +6,5 @@ export { default as Header } from './Header';
 export { default as EmployeeCard } from '../ui/EmployeeCard';
 export {default as NewEmployeeBtn} from '../ui/NewEmployeeBtn';
 export {default as SignUp} from './Login/SignUp';
+export {default as EmployeeDetail} from './EmployeeDetail';
+export {default as EditEmployeeDetails} from './EditEmployeeDetails';

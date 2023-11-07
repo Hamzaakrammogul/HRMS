@@ -11,6 +11,20 @@ import { NavLink } from 'react-router-dom';
 import EmployeeDetail from './EmployeeDetail';
 import EditEmployeeDetails from './EditEmployeeDetails';
 import { useNavigate } from 'react-router-dom';
+import { createRoutesFromElements } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
+const routesDefination = createRoutesFromElements(
+    <Route>
+        <Route path='/' element={< Dashboard />} />
+        <Route path='/employees' element={<Employee />} />
+        <Route path='/employee/:id' element={<EmployeeDetail />} />
+        <Route path='/employee/:id/edit-details' element={<EditEmployeeDetails />} />
+    </Route>
+);
+
+const router = createBrowserRouter(routesDefination)
 
 const MainPanel = () => {
 
@@ -34,14 +48,15 @@ const MainPanel = () => {
                         {/* Menu Items */}
                         <div className='mt-10'>
                             <ul>
-                                <NavLink to={'/'}> <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold'> <LuLayoutDashboard size={24} /> Dashboard</li></NavLink>
+                                <NavLink to={'/main'}> <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold'> <LuLayoutDashboard size={24} /> Dashboard</li></NavLink>
 
-                                <NavLink to={'/employees'}><li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '> <IoMdPerson size={24} /> Employees</li></NavLink>
+                                <NavLink to={'/main/employee'}><li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '> <IoMdPerson size={24} /> Employees</li></NavLink>
                             </ul>
-                            <div className='mt-10 space-y-2' >
+                            <NavLink to={'/'}> <div className='mt-10 space-y-2' >
                                 <div className='w-11/12 border border-white border-opacity-50' />
                                 <h1 className='flex text-white cursor-pointer text-lg items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '><LuLogOut /> Logout </h1>
                             </div>
+                            </NavLink>
                         </div>
                     </div>
 
@@ -50,12 +65,7 @@ const MainPanel = () => {
 
                     <div className='w-4/5 bg-white mt-5 rounded-3xl h-screen p-5 overflow-auto'>
                         <Header />
-                        <Routes>
-                            <Route path='/' element={< Dashboard />} />
-                            <Route path='/dashboard/employees' element={<Employee />} />
-                            <Route path='/employee/:id' element={<EmployeeDetail />} />
-                            <Route path='/employee/:id/edit-details' element={<EditEmployeeDetails />} />
-                        </Routes>
+                        <Outlet />
                     </div>
                 </div>
             </div>

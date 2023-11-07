@@ -6,7 +6,7 @@ const EmployeeCard = ({ id, Name, position, office, doj, phone, email, img, empN
     const navigate = useNavigate();
 
     return (
-        <div onClick={() => navigate('/employee/' + id)} className='w-[31%] rounded-2xl shadow-lg h-[170px] cursor-pointer border hover:border-gray-500 hover:border-2   p-2'>
+        <div onClick={() => navigate('/main/employee/'+ id)} className='w-[31%] rounded-2xl shadow-lg h-[170px] cursor-pointer border hover:border-gray-500 hover:border-2   p-2'>
             <div className='flex gap-2 justify-center'>
                 {/* Left side */}
 
