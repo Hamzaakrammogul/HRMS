@@ -13,7 +13,7 @@ const EmployeeDetail = () => {
     return (
         <div className=''>
             <div className='flex mt-10'>
-                <h1 className='text-4xl font-semibold'>{data[0].Name} Information</h1>
+                <h1 className='text-3xl text-bgBlue font-semibold'>Employee Profile</h1>
             </div>
 
             <div className='border  mt-5 mb-10' />

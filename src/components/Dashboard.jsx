@@ -11,7 +11,7 @@ const Dashboard = () => {
     return (
         <div className=''>
             <div className='flex mt-10'>
-                <h1 className='text-4xl font-semibold'>{data[0].Name} Profile</h1>
+                <h1 className='text-3xl text-bgBlue'>Your Dashboard</h1>
             </div>
 
             <div className='border  mt-5 mb-10' />

@@ -3,32 +3,13 @@ import { LuLayoutDashboard } from 'react-icons/lu';
 import { IoMdPerson } from 'react-icons/io';
 import { LuLogOut } from 'react-icons/lu';
 import Dp from '/img/logo.png';
-import { Routes, Route } from 'react-router-dom';
-import Dashboard from './Dashboard';
-import Employee from './Employee';
 import Header from './Header';
 import { NavLink } from 'react-router-dom';
-import EmployeeDetail from './EmployeeDetail';
-import EditEmployeeDetails from './EditEmployeeDetails';
-import { useNavigate } from 'react-router-dom';
-import { createRoutesFromElements } from 'react-router-dom';
-import { createBrowserRouter } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 
-const routesDefination = createRoutesFromElements(
-    <Route>
-        <Route path='/' element={< Dashboard />} />
-        <Route path='/employees' element={<Employee />} />
-        <Route path='/employee/:id' element={<EmployeeDetail />} />
-        <Route path='/employee/:id/edit-details' element={<EditEmployeeDetails />} />
-    </Route>
-);
-
-const router = createBrowserRouter(routesDefination)
 
 const MainPanel = () => {
 
-    const navigate = useNavigate();
 
     return (
         <div className='bg-bgBlue h-screen overflow-y-hidden '>
@@ -48,9 +29,9 @@ const MainPanel = () => {
                         {/* Menu Items */}
                         <div className='mt-10'>
                             <ul>
-                                <NavLink to={'/main'}> <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold'> <LuLayoutDashboard size={24} /> Dashboard</li></NavLink>
+                                <NavLink to={'/main'}> <li className=' flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold'> <LuLayoutDashboard size={24} /> Dashboard</li></NavLink>
 
-                                <NavLink to={'/main/employee'}><li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '> <IoMdPerson size={24} /> Employees</li></NavLink>
+                                <NavLink to={'/main/employee'} ><li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '> <IoMdPerson size={24} /> Employees</li></NavLink>
                             </ul>
                             <NavLink to={'/'}> <div className='mt-10 space-y-2' >
                                 <div className='w-11/12 border border-white border-opacity-50' />

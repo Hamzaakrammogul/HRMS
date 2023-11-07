@@ -21,9 +21,9 @@ const PopUp = ({ data, id }) => {
         <div className='flex  justify-center items-center mt- bg-transparent  '>
             <div className='  w-[50%] absolute rounded-xl h-[500px] 2xl:h-[700px] bg-white mt-[50%] shadow-lg shadow-gray-300 overflow-x-hidden overflow-y-scroll p-2 '>
                 <div className=''>
-                    <div className='flex justify-between items-center mt-10'>
-                        <h1 className='text-2xl font-semibold'>{data[0].Name} Information</h1>
-                        <div className=' cursor-pointer hover:text-red-400 ' onClick={() => navigate('/employee/' + id)}><CgCloseR /></div>
+                    <div className='flex place-content-end  mt-10'>
+                        {/* <h1 className='text-2xl font-semibold'>{data[0].Name} Information</h1> */}
+                        <div className=' cursor-pointer hover:text-red-400 ' onClick={() => navigate('/main/employee/' + id)}><CgCloseR /></div>
                     </div>
                     <div className='border  mt-5 mb-10' />
                     <div className='flex flex-col items-center justify-center my-5'>
