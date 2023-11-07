@@ -59,7 +59,7 @@ const PopUp = ({ data, id }) => {
                                     <div className='flex'>
                                         <input onChange={(e) => setData({ ...data1, empNo: e.target.value })} value={data1.empNo} type='text' id='emp-id' className='bg-dusty text-sm w-full font-semibold outline-none' />
                                         <TbEdit />
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
                                     <label htmlFor='location' className='text-textDusty'>Office</label>

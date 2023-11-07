@@ -5,6 +5,7 @@ import { createRoutesFromElements } from 'react-router-dom';
 import { createBrowserRouter } from 'react-router-dom';
 
 const routesDefination = createRoutesFromElements(
+
   <Route>
     <Route path='/' element={<SignUp />} />
     <Route path='/main' element={<MainPanel />} children={[
@@ -14,6 +15,7 @@ const routesDefination = createRoutesFromElements(
       <Route path='/main/employee/:id/edit-details' element={<EditEmployeeDetails />} />
     ]} />
   </Route>
+  
 );
 
 const router = createBrowserRouter(routesDefination);
