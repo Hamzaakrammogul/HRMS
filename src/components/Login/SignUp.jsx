@@ -1,43 +1,93 @@
 import { Button } from '@material-tailwind/react'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from '../api/axios'
 
 const SignUp = () => {
   const [email, setEmail] = useState()
   const [pswd, setPswd] = useState()
   const [emailValid, setEmailValid] = useState('')
   const [pswdValid, setPswdValid] = useState('')
+  const [users, setUsers] = useState('')
 
   const eValid = useRef()
   const pValid = useRef()
 
   const navigate = useNavigate()
 
-  const navFun = () => {
-    if (
-      eValid.current.value === 'hamza@techilab.com' &&
-      pValid.current.value === 'hamza'
-    ) {
+  let isMounted = true
+  const controller = new AbortController()
+
+  const login = async () => {
+    var postData = {
+      email: email,
+      password: pswd
+    }
+    let axiosConfig = {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*'
+      }
+    }
+    try {
+      const response = await axios.post(
+        '/employee/login',
+        postData,
+        axiosConfig,
+        {
+          signal: controller.signal
+        }
+      )
+      // console.log(response)
+      isMounted && setUsers(response.data)
+      console.log(users)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const validation = () => {
+    if (users.myToken) {
+      setEmailValid(true)
+      setPswdValid(true)
       navigate('/main')
     } else {
-      console.log('Wrong')
-    }
-  }
-
-  const onSubmitHandler = e => {
-    e.preventDefault()
-    if (email === 'hamza@techilab.com') {
-      setEmailValid(true)
-    } else {
       setEmailValid(false)
-    }
-    if (pswd === 'hamza') {
-      setPswdValid(true)
-    } else {
       setPswdValid(false)
     }
-    navFun()
   }
+  const onSubmitHandler = async e => {
+    e.preventDefault()
+    login()
+    validation();
+    // setTimeout(validation, 5000)
+  }
+
+  // const navFun = () => {
+  //   if (
+  //     eValid.current.value === 'hamza@techilab.com' &&
+  //     pValid.current.value === 'hamza'
+  //   ) {
+  //     navigate('/main')
+  //   } else {
+  //     console.log('Wrong')
+  //   }
+  // }
+
+  // const onSubmitHandler = e => {
+  //   e.preventDefault()
+  //   if (email === 'hamza@techilab.com') {
+  //     setEmailValid(true)
+  //   } else {
+  //     setEmailValid(false)
+  //   }
+  //   if (pswd === 'hamza') {
+  //     setPswdValid(true)
+  //   } else {
+  //     setPswdValid(false)
+  //   }
+
+  //   navFun()
+  // }
 
   return (
     <div className='container mx-auto'>
