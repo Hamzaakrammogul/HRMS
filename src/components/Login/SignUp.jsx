@@ -1,9 +1,11 @@
 import { Button } from '@material-tailwind/react'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
-
+import userAuth from '../../hooks/userAuth'
 const SignUp = () => {
+  const { setAuth, auth } = userAuth()
+
   const [email, setEmail] = useState()
   const [pswd, setPswd] = useState()
   const [emailValid, setEmailValid] = useState('')
@@ -15,8 +17,8 @@ const SignUp = () => {
 
   const navigate = useNavigate()
 
-  let isMounted = true
-  const controller = new AbortController()
+  // let isMounted = true
+  // const controller = new AbortController()
 
   const login = async () => {
     var postData = {
@@ -33,20 +35,24 @@ const SignUp = () => {
       const response = await axios.post(
         '/employee/login',
         postData,
-        axiosConfig,
-        {
-          signal: controller.signal
-        }
+        axiosConfig
       )
-      // console.log(response)
-      isMounted && setUsers(response.data)
-      console.log(users)
+      const myToken = response?.data?.myToken
+      const role = [response?.data?.user.role]
+      const user = response?.data?.user
+      const id= response?.data?.user._id
+      setAuth({id, myToken, role, user })
+      console.log(auth)
     } catch (error) {
-      console.error(error)
+      if (error.response.status === 500) {
+        console.log('Internal Server Error ')
+      } else if (error.response.status === 401) {
+        console.log('Unauthorsied or insufficeint credentials')
+      }
     }
   }
   const validation = () => {
-    if (users.myToken) {
+    if (auth.myToken.trim() !== '') {
       setEmailValid(true)
       setPswdValid(true)
       navigate('/main')
@@ -58,7 +64,7 @@ const SignUp = () => {
   const onSubmitHandler = async e => {
     e.preventDefault()
     login()
-    validation();
+    validation()
     // setTimeout(validation, 5000)
   }
 

@@ -8,7 +8,9 @@ import {
   EditEmployeeDetails,
   MakeRequest,
   OverlayRequest,
-  RequestDetailsCard
+  RequestDetailsCard,
+  RequiredAuth,
+  Unauthorized
 } from './components'
 
 import { Route, RouterProvider } from 'react-router-dom'
@@ -18,25 +20,29 @@ import { createBrowserRouter } from 'react-router-dom'
 const routesDefination = createRoutesFromElements(
   <Route>
     <Route path='/' element={<SignUp />} />
-    <Route
-      path='/main'
-      element={<MainPanel />}
-      children={[
-        <Route path='/main' element={<Dashboard />} />,
-        <Route path='/main/employee' element={<Employee />} />,
-        <Route path='/main/request' element={<MakeRequest />} />,
-        <Route path='/main/request/:id' element={<RequestDetailsCard />} />,
-        <Route
-          path='/main/request/create-request'
-          element={<OverlayRequest />}
-        />,
-        <Route path='/main/employee/:id' element={<EmployeeDetail />} />,
-        <Route
-          path='/main/employee/:id/edit-details'
-          element={<EditEmployeeDetails />}
-        />
-      ]}
-    />
+    <Route path='/unauthorized' element={<Unauthorized />} />
+
+    <Route element={<RequiredAuth allowedRoles={[0, 1, 2, 3]} />}>
+      <Route
+        path='/main'
+        element={<MainPanel />}
+        children={[
+          <Route path='/main' element={<Dashboard />} />,
+          <Route path='/main/employee' element={<Employee />} />,
+          <Route path='/main/request' element={<MakeRequest />} />,
+          <Route path='/main/request/:id' element={<RequestDetailsCard />} />,
+          <Route
+            path='/main/request/create-request'
+            element={<OverlayRequest />}
+          />,
+          <Route path='/main/employee/:id' element={<EmployeeDetail />} />,
+          <Route
+            path='/main/employee/:id/edit-details'
+            element={<EditEmployeeDetails />}
+          />
+        ]}
+      />
+    </Route>
   </Route>
 )
 const router = createBrowserRouter(routesDefination)

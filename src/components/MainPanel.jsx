@@ -2,13 +2,15 @@ import React from 'react'
 import { LuLayoutDashboard } from 'react-icons/lu'
 import { IoMdPerson } from 'react-icons/io'
 import { LuLogOut } from 'react-icons/lu'
-import { FiGitPullRequest } from "react-icons/fi";
+import { FiGitPullRequest } from 'react-icons/fi'
 import Dp from '/img/logo.png'
 import Header from './Header'
 import { NavLink } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
+import userAuth from '../hooks/userAuth'
 
 const MainPanel = () => {
+  const { setAuth } = userAuth()
   return (
     <div className='bg-bgBlue h-screen overflow-y-hidden '>
       <div className='container mx-auto'>
@@ -45,13 +47,14 @@ const MainPanel = () => {
                 <NavLink to={'/main/request'}>
                   <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '>
                     {' '}
-                    <FiGitPullRequest size={24} />Requests
+                    <FiGitPullRequest size={24} />
+                    Requests
                   </li>
                 </NavLink>
               </ul>
               <NavLink to={'/'}>
                 {' '}
-                <div className='mt-10 space-y-2'>
+                <div className='mt-10 space-y-2' onClick={() => setAuth('')}>
                   <div className='w-11/12 border border-white border-opacity-50' />
                   <h1 className='flex text-white cursor-pointer text-lg items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '>
                     <LuLogOut /> Logout{' '}

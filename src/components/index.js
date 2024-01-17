@@ -12,3 +12,5 @@ export { default as MakeRequest } from './MakeRequest';
 export { default as NewRequestBtn } from '../ui/NewRequestBtn';
 export { default as OverlayRequest } from '../components/OverlayRequest';
 export { default as RequestDetailsCard } from '../components/RequestDetailsCard';
+export { default as RequiredAuth } from './RequiredAuth';
+export { default as Unauthorized } from './Unauthorized'
