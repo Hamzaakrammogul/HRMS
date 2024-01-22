@@ -1,4 +1,4 @@
-import { Button } from '@material-tailwind/react'
+import { Button, Spinner } from '@material-tailwind/react'
 import React, { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
@@ -6,7 +6,7 @@ import userAuth from '../../hooks/userAuth'
 import useStateRef from 'react-usestateref'
 const SignUp = () => {
   const { setAuth, auth } = userAuth()
-
+  const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState()
   const [pswd, setPswd] = useState()
   // const [emailValid, setEmailValid] = useState('')
@@ -23,6 +23,7 @@ const SignUp = () => {
   // const controller = new AbortController()
 
   const login = async () => {
+    setLoading(true)
     var postData = {
       email: email,
       password: pswd
@@ -48,15 +49,18 @@ const SignUp = () => {
       setPswdValid(true)
       console.log('This is auth', auth)
       navigate('/main')
+      setLoading(false)
     } catch (error) {
       if (error.response.status === 500) {
         console.log('Internal Server Error ')
         setEmailValid(false)
         setPswdValid(false)
+        setLoading(false)
       } else if (error.response.status === 401) {
         console.log('Unauthorsied or insufficeint credentials')
         setEmailValid(false)
         setPswdValid(false)
+        setLoading(false)
       }
     }
   }
@@ -173,8 +177,8 @@ const SignUp = () => {
 
             <p className=' text-bgBlue font-semibold'>Forgot password?</p>
 
-            <Button type='submit' className='bg-bgBlue '>
-              Sign in
+            <Button type='submit' className='bg-bgBlue items-center'>
+              {loading ? <Spinner className='w-4 h-4 mx-auto' /> : ' Sign in'}
             </Button>
           </form>
         </div>
