@@ -1,16 +1,18 @@
 import { Button } from '@material-tailwind/react'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 import userAuth from '../../hooks/userAuth'
+import useStateRef from 'react-usestateref'
 const SignUp = () => {
   const { setAuth, auth } = userAuth()
 
   const [email, setEmail] = useState()
   const [pswd, setPswd] = useState()
+  // const [emailValid, setEmailValid] = useState('')
+  // const [pswdValid, setPswdValid] = useState('')
   const [emailValid, setEmailValid] = useState('')
   const [pswdValid, setPswdValid] = useState('')
-  const [users, setUsers] = useState('')
 
   const eValid = useRef()
   const pValid = useRef()
@@ -40,31 +42,47 @@ const SignUp = () => {
       const myToken = response?.data?.myToken
       const role = [response?.data?.user.role]
       const user = response?.data?.user
-      const id= response?.data?.user._id
-      setAuth({id, myToken, role, user })
-      console.log(auth)
+      const id = response?.data?.user._id
+      setAuth({ id, myToken, role, user })
+      setEmailValid(true)
+      setPswdValid(true)
+      console.log('This is auth', auth)
+      navigate('/main')
     } catch (error) {
       if (error.response.status === 500) {
         console.log('Internal Server Error ')
+        setEmailValid(false)
+        setPswdValid(false)
       } else if (error.response.status === 401) {
         console.log('Unauthorsied or insufficeint credentials')
+        setEmailValid(false)
+        setPswdValid(false)
       }
     }
   }
-  const validation = () => {
-    if (auth.myToken.trim() !== '') {
-      setEmailValid(true)
-      setPswdValid(true)
-      navigate('/main')
-    } else {
-      setEmailValid(false)
-      setPswdValid(false)
-    }
-  }
+  // const validation = () => {
+  //   if (refAuth.myToken.trim() !== '') {
+  //     setEmailValid(true)
+  //     setPswdValid(true)
+  //     navigate('/main')
+  //   } else {
+  //     setEmailValid(false)
+  //     setPswdValid(false)
+  //   } // const validation = () => {
+  //   if (refAuth.myToken.trim() !== '') {
+  //     setEmailValid(true)
+  //     setPswdValid(true)
+  //     navigate('/main')
+  //   } else {
+  //     setEmailValid(false)
+  //     setPswdValid(false)
+  //   }
+  // }
+  // }
   const onSubmitHandler = async e => {
     e.preventDefault()
     login()
-    validation()
+    // validation()
     // setTimeout(validation, 5000)
   }
 
@@ -118,18 +136,19 @@ const SignUp = () => {
               }}
               placeholder='Enter your email'
               type='email'
+              required
               className={`w-full p-3 rounded-xl border  focus:border-gray-400 focus:outline-none focus:ring-2 ${
                 emailValid === false ? 'border-red-400' : 'border-gray-600'
               }`}
             />
 
-            <p
+            {/* <p
               className={` ${
                 emailValid === false ? 'flex' : 'hidden'
               } -mt-4 text-red-400`}
             >
               Wrong Email!
-            </p>
+            </p> */}
 
             <input
               ref={pValid}
@@ -138,6 +157,7 @@ const SignUp = () => {
               }}
               placeholder='Password'
               type='password'
+              required
               className={` ${
                 pswdValid === false ? 'border-red-400' : 'border-gray-600'
               } w-full p-3 rounded-xl border focus:border-gray-400 focus:outline-none focus:ring-2`}
@@ -148,7 +168,7 @@ const SignUp = () => {
                 pswdValid === false ? 'flex' : 'hidden'
               } -mt-4 text-red-400`}
             >
-              Wrong Password!
+              Wrong email or password!
             </p>
 
             <p className=' text-bgBlue font-semibold'>Forgot password?</p>

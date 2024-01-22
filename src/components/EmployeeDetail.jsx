@@ -3,12 +3,18 @@ import { useParams } from 'react-router-dom'
 import { employeeData } from '../utils/data'
 import { Button } from '@material-tailwind/react'
 import { useNavigate } from 'react-router-dom'
+import userAuth from '../hooks/userAuth'
+import Img from '../../public/img/dp.png'
+
 const EmployeeDetail = () => {
   const { id } = useParams()
+  const {userData} = userAuth();
 
-  const data = employeeData.filter(obj => {
-    return obj.empNo == id
+  const data = userData?.filter(obj => {
+    return obj._id === id
   })
+  // console.log(userData)
+  console.log(data)
 
   const navigate = useNavigate()
 
@@ -22,55 +28,55 @@ const EmployeeDetail = () => {
       <div className='flex flex-col items-center justify-center my-5'>
         <div className='flex flex-col items-center space-y-4'>
           <div className='w-40 h-40 rounded-xl overflow-hidden'>
-            <img src={data[0].img} />
+            <img src={Img} />
           </div>
           <div>
-            <h1 className='text-2xl font-bold'>{data[0].Name}</h1>
+            <h1 className='text-2xl font-bold'>{data[0]?.name}</h1>
           </div>
         </div>
         <div className='flex w-[70%] ml-20 mb-5'>
           <div className='w-1/2 flex flex-col space-y-5 mt-5'>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Name</span>
-              <span className='font-semibold'>{data[0].Name}</span>
+              <span className='font-semibold'>{data[0]?.name}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Email</span>
-              <span className='font-semibold'>{data[0].email}</span>
+              <span className='font-semibold'>{data[0]?.email}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Position</span>
-              <span className='font-semibold'>{data[0].position}</span>
+              <span className='font-semibold'>{"Software Engineer"}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Employee Id</span>
-              <span className='font-semibold'>{data[0].empNo}</span>
+              <span className='font-semibold'>{data[0]?._id}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Office Location</span>
-              <span className='font-semibold'>{data[0].office}</span>
+              <span className='font-semibold'>{"Gulberg Office"}</span>
             </div>
           </div>
           <div className='w-1/2 flex flex-col space-y-5 mt-5'>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Department</span>
-              <span className='font-semibold'>{data[0].department}</span>
+              <span className='font-semibold'>{"Engineering Department"}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Phone</span>
-              <span className='font-semibold'>{data[0].phone}</span>
+              <span className='font-semibold'>{data[0]?.contact}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Joining Date</span>
-              <span className='font-semibold'>{data[0].doj}</span>
+              <span className='font-semibold'>{"2023-11-06"}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Status</span>
-              <span className='font-semibold'>{data[0].status}</span>
+              <span className='font-semibold'>{"Active"}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
-              <span className='text-textDusty'>Current Sa;ary</span>
-              <span className='font-semibold'>{data[0].salary}</span>
+              <span className='text-textDusty'>Current Salary</span>
+              <span className='font-semibold'>{"100,000"}</span>
             </div>
           </div>
         </div>

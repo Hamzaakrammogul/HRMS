@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NewEmployeeBtn from '../ui/NewEmployeeBtn'
 import BrowseBox from '../ui/BrowseBox'
 import { CiSearch } from 'react-icons/ci'
 import { employeeData } from '../utils/data.js'
 import EmployeeCard from '../ui/EmployeeCard'
-
+import axios from './api/axios.js'
+import userAuth from '../hooks/userAuth.jsx'
+import Img from '../../public/img/dp.png'
 const Employee = () => {
+  const {userData, setData} = userAuth()
+  useEffect(() => {
+    apidata();
+  }, [])
+
+  const apidata = async () => {
+    try {
+      const response = await axios.get('/employee');
+      const resData= response?.data?.myEmployee
+      setData(resData)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  console.log(userData)
   return (
     <div className='contanier mx-auto mt-7 mb-7 2xl:mb-0'>
       {/* Headings and button */}
@@ -56,21 +73,21 @@ const Employee = () => {
 
       {/* Card Render in this div */}
       <div className='flex mt-2 flex-wrap gap-6 ml-4'>
-        {employeeData.map(item => (
+        {userData?.map(item => (
           <EmployeeCard
-            key={item.id}
-            id={item.empNo}
-            Name={item.Name}
-            position={item.position}
-            doj={item.doj}
-            phone={item.phone}
+            key={item.index}
+            id={item._id}
+            Name={item.name}
+            position={"software Engineer"}
+            doj={"2023-11-06"}
+            phone={item.contact}
             email={item.email}
-            img={item.img}
-            office={item.office}
-            empNo={item.empNo}
-            status={item.status}
-            department={item.department}
-            salary={item.salary}
+            img={Img}
+            office={"Gulberg Office"}
+            empNo={"Emp-0001"}
+            status={"Active"}
+            department={"Engineering Department"}
+            salary={"100,000"}
           />
         ))}
       </div>
