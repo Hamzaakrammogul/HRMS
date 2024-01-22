@@ -247,7 +247,7 @@ const PopUp = ({ data, id }) => {
             <div className={` space-x-2 mt-10`}>
               <Button
               type='submit'
-                onSubmit={onSubmitHandler}
+                onClick={()=>navigate('/main/employee/' + id)}
                 className='bg-bgBlue'
               >
                 submit

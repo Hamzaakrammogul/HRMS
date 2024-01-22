@@ -6,7 +6,7 @@ import userAuth from '../../hooks/userAuth'
 import useStateRef from 'react-usestateref'
 const SignUp = () => {
   const { setAuth, auth } = userAuth()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState()
   const [email, setEmail] = useState()
   const [pswd, setPswd] = useState()
   // const [emailValid, setEmailValid] = useState('')
@@ -142,7 +142,7 @@ const SignUp = () => {
               type='email'
               required
               className={`w-full p-3 rounded-xl border  focus:border-gray-400 focus:outline-none focus:ring-2 ${
-                emailValid === false ? 'border-red-400' : 'border-gray-600'
+                emailValid === false && loading === false ? 'border-red-400' : 'border-gray-600'
               }`}
             />
 
@@ -163,13 +163,13 @@ const SignUp = () => {
               type='password'
               required
               className={` ${
-                pswdValid === false ? 'border-red-400' : 'border-gray-600'
+                pswdValid === false && loading === false ? 'border-red-400' : 'border-gray-600'
               } w-full p-3 rounded-xl border focus:border-gray-400 focus:outline-none focus:ring-2`}
             />
 
             <p
               className={` ${
-                pswdValid === false ? 'flex' : 'hidden'
+                pswdValid === false && loading === false ? 'flex' : 'hidden'
               } -mt-4 text-red-400`}
             >
               Wrong email or password!
