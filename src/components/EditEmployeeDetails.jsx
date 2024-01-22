@@ -14,18 +14,21 @@ const Overlay = () => {
 }
 
 const PopUp = ({ data, id }) => {
+  const { auth } = userAuth()
   const [data1, setData] = useState(data[0])
   console.log(data1)
   const navigate = useNavigate()
-  const onSubmitHandler = async (e) => {
-    e.preventDefault();
+  const onSubmitHandler = async e => {
+    e.preventDefault()
+    const JWT = auth.myToken
     var postData = {
       data: data1
     }
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        Authentication: `Bearer${JWT}`
       }
     }
     try {
@@ -34,11 +37,10 @@ const PopUp = ({ data, id }) => {
         postData,
         axiosConfig
       )
-      
+      navigate('/main/employee/' + id)
     } catch (error) {
-      
+      console.error(error)
     }
-    navigate('/main/employee/' + id)
   }
   return (
     <div className='flex  justify-center items-center mt- bg-transparent  '>
@@ -125,7 +127,7 @@ const PopUp = ({ data, id }) => {
                       onChange={e =>
                         setData({ ...data1, empNo: e.target.value })
                       }
-                      value={data1?._id}
+                      value={'Emp-0001'}
                       type='text'
                       id='emp-id'
                       className='bg-dusty text-sm w-full font-semibold outline-none'
@@ -246,8 +248,8 @@ const PopUp = ({ data, id }) => {
             {/* ${data[0].status === "Active" ? 'block' : 'hidden'} */}
             <div className={` space-x-2 mt-10`}>
               <Button
-              type='submit'
-                onClick={()=>navigate('/main/employee/' + id)}
+                type='submit'
+                onClick={() => navigate('/main/employee/' + id)}
                 className='bg-bgBlue'
               >
                 submit

@@ -1,18 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { employeeData } from '../utils/data'
 import { Button } from '@material-tailwind/react'
 import { useNavigate } from 'react-router-dom'
 import userAuth from '../hooks/userAuth'
 import Img from '../../public/img/dp.png'
+import axios from './api/axios'
+import NotificationPopUp from '../ui/NotificationPopUp'
 
 const EmployeeDetail = () => {
   const { id } = useParams()
-  const {userData} = userAuth();
+  const { userData, auth } = userAuth()
+  const [success, setSuccess] = useState()
 
   const data = userData?.filter(obj => {
     return obj._id === id
   })
+  const did = 'id is missing for now'
+  const onDeleteHandler = async () => {
+    const JWT = auth.myToken
+
+    let axiosConfig = {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*',
+        Authentication: `Bearer${JWT}`
+      }
+    }
+    try {
+      const response = await axios.put(
+        `/employee/update${id}?did=${did}`,
+        axiosConfig
+      )
+      setSuccess(true)
+      // navigate('/main/employee/')
+    } catch (error) {
+      setSuccess(false)
+      // navigate('/main/employee/')
+      console.error(error)
+    }
+  }
   // console.log(userData)
   console.log(data)
 
@@ -46,21 +72,21 @@ const EmployeeDetail = () => {
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Position</span>
-              <span className='font-semibold'>{"Software Engineer"}</span>
+              <span className='font-semibold'>{'Software Engineer'}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Employee Id</span>
-              <span className='font-semibold'>{data[0]?._id}</span>
+              <span className='font-semibold'>{'Emp-0001'}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Office Location</span>
-              <span className='font-semibold'>{"Gulberg Office"}</span>
+              <span className='font-semibold'>{'Gulberg Office'}</span>
             </div>
           </div>
           <div className='w-1/2 flex flex-col space-y-5 mt-5'>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Department</span>
-              <span className='font-semibold'>{"Engineering Department"}</span>
+              <span className='font-semibold'>{'Engineering Department'}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Phone</span>
@@ -68,15 +94,15 @@ const EmployeeDetail = () => {
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Joining Date</span>
-              <span className='font-semibold'>{"2023-11-06"}</span>
+              <span className='font-semibold'>{'2023-11-06'}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Status</span>
-              <span className='font-semibold'>{"Active"}</span>
+              <span className='font-semibold'>{'Active'}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
               <span className='text-textDusty'>Current Salary</span>
-              <span className='font-semibold'>{"100,000"}</span>
+              <span className='font-semibold'>{'100,000'}</span>
             </div>
           </div>
         </div>
@@ -89,9 +115,13 @@ const EmployeeDetail = () => {
           >
             Edit Details
           </Button>
-          <Button className='bg-bgBlue'>Delete User</Button>
+          <Button onClick={onDeleteHandler} className='bg-bgBlue'>
+            Delete User
+          </Button>
         </div>
       </div>
+      {success ===true ? <NotificationPopUp description={"Employee deleted successfuly :)"} /> : success === false ? <NotificationPopUp description={"Something went Wrong! :("}/> :''}
+      
     </div>
   )
 }
