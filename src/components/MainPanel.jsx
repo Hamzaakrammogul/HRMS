@@ -8,6 +8,7 @@ import Header from './Header'
 import { NavLink } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import userAuth from '../hooks/userAuth'
+import { CgOrganisation } from "react-icons/cg";
 
 const MainPanel = () => {
   const { setAuth } = userAuth()
@@ -51,8 +52,15 @@ const MainPanel = () => {
                     Requests
                   </li>
                 </NavLink>
+                <NavLink to={'/main/departments'}>
+                  <li className='flex text-white cursor-pointer text-xl items-center gap-4 py-2 px-2 rounded-l-lg transition duration-300 hover:bg-white hover:text-bgBlue hover:font-semibold '>
+                    {' '}
+                    <CgOrganisation size={24} />
+                    Departments
+                  </li>
+                </NavLink>
               </ul>
-              <NavLink to={'/'}>
+              <NavLink>
                 {' '}
                 <div className='mt-10 space-y-2' onClick={() => setAuth('')}>
                   <div className='w-11/12 border border-white border-opacity-50' />

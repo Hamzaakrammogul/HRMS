@@ -14,3 +14,6 @@ export { default as OverlayRequest } from '../components/OverlayRequest';
 export { default as RequestDetailsCard } from '../components/RequestDetailsCard';
 export { default as RequiredAuth } from './RequiredAuth';
 export { default as Unauthorized } from './Unauthorized'
+export {default as Department} from './Department'
+export {default as DepartmentDetails} from './DepartmentDetails';
+export {default as RegisterDept} from './RegisterDept';

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Button } from '@material-tailwind/react'
+import { Button, Spinner } from '@material-tailwind/react'
 import { useNavigate } from 'react-router-dom'
 import userAuth from '../hooks/userAuth'
 import Img from '../../public/img/dp.png'
@@ -11,7 +11,7 @@ const EmployeeDetail = () => {
   const { id } = useParams()
   const { userData, auth } = userAuth()
   const [success, setSuccess] = useState()
-
+  const [loading, setLoading] = useState()
   const data = userData?.filter(obj => {
     return obj._id === id
   })
@@ -27,16 +27,19 @@ const EmployeeDetail = () => {
       }
     }
     try {
+      setLoading(true)
       const response = await axios.put(
         `/employee/update${id}?did=${did}`,
         axiosConfig
       )
       setSuccess(true)
+      setLoading(false)
       // navigate('/main/employee/')
     } catch (error) {
       setSuccess(false)
       // navigate('/main/employee/')
       console.error(error)
+      setLoading(false)
     }
   }
   // console.log(userData)
@@ -116,12 +119,17 @@ const EmployeeDetail = () => {
             Edit Details
           </Button>
           <Button onClick={onDeleteHandler} className='bg-bgBlue'>
-            Delete User
+            {loading ? <Spinner className='w-4 h-4 mx-8'/> : ' Delete User'}
           </Button>
         </div>
       </div>
-      {success ===true ? <NotificationPopUp description={"Employee deleted successfuly :)"} /> : success === false ? <NotificationPopUp description={"Something went Wrong! :("}/> :''}
-      
+      {success === true ? (
+        <NotificationPopUp description={'Employee deleted successfuly :)'} />
+      ) : success === false ? (
+        <NotificationPopUp description={'Something went Wrong! :('} />
+      ) : (
+        ''
+      )}
     </div>
   )
 }

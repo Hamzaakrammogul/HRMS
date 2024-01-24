@@ -18,6 +18,7 @@ const PopUp = ({ data, id }) => {
   const [data1, setData] = useState(data[0])
   console.log(data1)
   const navigate = useNavigate()
+  
   const onSubmitHandler = async e => {
     e.preventDefault()
     const JWT = auth.myToken

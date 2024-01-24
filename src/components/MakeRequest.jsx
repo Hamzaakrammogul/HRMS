@@ -7,7 +7,7 @@ const MakeRequest = () => {
   const navigate = useNavigate()
   return (
     <>
-      <div className='flex mt-10 justify-between items-center'>
+      <div className='flex mt-10  justify-between items-center'>
         <div className='flex flex-col space-y-2'>
           <h1 className='text-3xl text-bgBlue'>Request portal</h1>
           <h1 className='text-xl text-textDusty'>
@@ -19,7 +19,7 @@ const MakeRequest = () => {
           <NewRequestBtn />{' '}
         </div>
       </div>
-      <div className='flex mt-10 flex-col space-y-4'>
+      <div className='flex mt-10 mb-10 flex-col space-y-4'>
         {requestData.map(data => (
           <RequestCard
             key={data.id}

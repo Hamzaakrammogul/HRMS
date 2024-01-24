@@ -24,7 +24,7 @@ const Employee = () => {
   }
   console.log(userData)
   return (
-    <div className='contanier mx-auto mt-7 mb-7 2xl:mb-0'>
+    <div className='contanier mx-auto mt-10 mb-7 2xl:mb-0'>
       {/* Headings and button */}
       <div className='flex justify-between items-center'>
         <div className='flex flex-col space-y-2'>

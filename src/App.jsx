@@ -10,7 +10,10 @@ import {
   OverlayRequest,
   RequestDetailsCard,
   RequiredAuth,
-  Unauthorized
+  Unauthorized,
+  Department,
+  DepartmentDetails,
+  RegisterDept
 } from './components'
 
 import { Route, RouterProvider } from 'react-router-dom'
@@ -29,16 +32,25 @@ const routesDefination = createRoutesFromElements(
         children={[
           <Route path='/main' element={<Dashboard />} />,
           <Route path='/main/employee' element={<Employee />} />,
+          <Route path='/main/employee/:id' element={<EmployeeDetail />} />,
+          <Route
+            path='/main/employee/:id/edit-details'
+            element={<EditEmployeeDetails />}
+          />,
           <Route path='/main/request' element={<MakeRequest />} />,
           <Route path='/main/request/:id' element={<RequestDetailsCard />} />,
           <Route
             path='/main/request/create-request'
             element={<OverlayRequest />}
           />,
-          <Route path='/main/employee/:id' element={<EmployeeDetail />} />,
+          <Route path='/main/departments' element={<Department />} />,
           <Route
-            path='/main/employee/:id/edit-details'
-            element={<EditEmployeeDetails />}
+            path='/main/departments/:id'
+            element={<DepartmentDetails />}
+          />,
+          <Route
+            path='/main/departments/register-dept'
+            element={<RegisterDept />}
           />
         ]}
       />
