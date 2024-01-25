@@ -4,17 +4,23 @@ import userAuth from '../hooks/userAuth'
 
 export default function NotificationPopUp({description}) {
 
-   const {auth} = userAuth();
+   const {auth, setNotify} = userAuth();
    const Name = auth?.user?.name
   let [isOpen, setIsOpen] = useState(true)
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
+    setNotify(false)
   }
 
   function openModal() {
     setIsOpen(true)
   }
+  // if(isOpen === false){
+  //   setNotify(false)
+  // }else{
+  //   setNotify('')
+  // }
 
   return (
     <>

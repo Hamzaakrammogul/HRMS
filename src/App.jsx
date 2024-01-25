@@ -13,7 +13,8 @@ import {
   Unauthorized,
   Department,
   DepartmentDetails,
-  RegisterDept
+  RegisterDept,
+  UpdateDept
 } from './components'
 
 import { Route, RouterProvider } from 'react-router-dom'
@@ -47,6 +48,10 @@ const routesDefination = createRoutesFromElements(
           <Route
             path='/main/departments/:id'
             element={<DepartmentDetails />}
+          />,
+          <Route
+            path='/main/departments/:id/update-details'
+            element={<UpdateDept />}
           />,
           <Route
             path='/main/departments/register-dept'

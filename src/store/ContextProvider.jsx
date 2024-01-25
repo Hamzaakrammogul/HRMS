@@ -7,9 +7,19 @@ export const ContextProvider = ({ children }) => {
   const [auth, setAuth] = useState()
   const [userData, setData] = useState()
   const [deptData, setDeptData] = useState()
+  const [notify, setNotify] = useState()
   return (
     <AuthContext.Provider
-      value={{ auth, setAuth, userData, setData, deptData, setDeptData }}
+      value={{
+        auth,
+        setAuth,
+        userData,
+        setData,
+        deptData,
+        setDeptData,
+        notify,
+        setNotify
+      }}
     >
       {children}
     </AuthContext.Provider>

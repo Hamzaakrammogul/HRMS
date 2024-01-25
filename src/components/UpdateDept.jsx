@@ -6,33 +6,35 @@ import axios from './api/axios'
 import userAuth from '../hooks/userAuth'
 import { Spinner } from '@material-tailwind/react'
 import NotificationPopUp from '../ui/NotificationPopUp'
+import { useParams } from 'react-router-dom'
 const Overlay = () => {
   return <div className='w-full absolute h-screen bg-black bg-opacity-30' />
 }
 
 const OverlayPopup = () => {
+  const { auth, deptData, notify, setNotify } = userAuth()
+  const { id } = useParams()
+
+  const res = deptData.filter(obj => {
+    return obj._id === id
+  })
   const [loading, setLoading] = useState()
   const [success, setSuccess] = useState('')
-  const [data, setData] = useState({})
+  const [data, setData] = useState(res[0])
   const navigate = useNavigate()
-  const { auth, notify, setNotify } = userAuth()
   const token = auth.myToken
-
-  const name = useRef()
-  const contact = useRef()
-
-  const email = useRef()
-  const profileImg = useRef()
   console.log(data)
-
+  console.log(id)
   const onSubmitHandler = async e => {
     e.preventDefault()
     setLoading(true)
     const postData = {
-      name: data.name,
-      email: data.email,
-      contact: data.contact,
-      profileImg: data.profileImg
+      data: {
+        name: data.name,
+        email: data.email,
+        contact: data.contact,
+        profileImg: data.profileImg
+      }
     }
     const config = {
       headers: {
@@ -40,24 +42,22 @@ const OverlayPopup = () => {
       }
     }
     try {
-      const response = await axios.post(
-        '/department/register',
+      const response = await axios.put(
+        `/department/update?id=${id}`,
         postData,
         config
       )
       console.log(response)
       setLoading(false)
       setSuccess(true)
-      // navigate('/main/departments')
     } catch (error) {
       console.error(error)
       setLoading(false)
       setSuccess(false)
-      // navigate('/main/departments')
     }
   }
   if (notify === false) {
-    navigate('/main/departments')
+    navigate(`/main/departments`)
     setNotify('')
   }
 
@@ -73,9 +73,9 @@ const OverlayPopup = () => {
               onChange={e => setData({ ...data, profileImg: e.target.value })}
               id='img'
               type='file'
-              ref={profileImg}
               placeholder='Upload Image'
-              className='bg-dusty mb-5 py-2  w-[80%] h-10 px-2 rounded-md text-sm font-semibold outline-none '
+              className='bg-dusty mb-5 py-2  w-[80%] h-10 px-2 rounded-md text-sm font-semibold outline-none'
+              value={data?.img}
             />
             <label htmlFor='name' className='text-textDusty'>
               Department's Name
@@ -85,9 +85,9 @@ const OverlayPopup = () => {
               required
               id='name'
               type='text'
-              ref={name}
               placeholder='Enter Name'
               className='bg-dusty mb-5  w-[80%] h-10 px-2 rounded-md text-sm font-semibold outline-none'
+              value={data?.name}
             />
             <label htmlFor='contact' className='text-textDusty'>
               Department's contact number
@@ -96,12 +96,15 @@ const OverlayPopup = () => {
               onChange={e => setData({ ...data, contact: e.target.value })}
               required
               id='contact'
-              ref={contact}
               type='tel'
               placeholder='Enter contact number'
               className='bg-dusty mb-5  w-[80%] h-10 px-2 rounded-md text-sm font-semibold outline-none'
+              value={data?.contact}
             />
-            <label htmlFor='email' className='text-textDusty'>
+            <label
+              htmlFor='email'
+              className=' const { id } = useParams();text-textDusty'
+            >
               Department's email
             </label>
             <input
@@ -109,19 +112,23 @@ const OverlayPopup = () => {
               required
               id='email'
               type='email'
-              ref={email}
               placeholder='Enter email'
               className='bg-dusty px-2 py-2 w-[80%] text-sm font-semibold break-words outline-none h-10  '
+              value={data?.email}
             />
             <div className='mt-10'>
               <Button type='submit' className='bg-bgBlue'>
-                {loading ? <Spinner className='w-4 h-4 mx-6' /> : 'Register'}
+                {loading ? (
+                  <Spinner className='w-4 h-4 mx-12' />
+                ) : (
+                  'Update Department'
+                )}
               </Button>
             </div>
           </form>
           {success === true ? (
             <NotificationPopUp
-              description={'Department created successfully :)'}
+              description={'Department updated successfully :)'}
             />
           ) : success === false ? (
             <NotificationPopUp
@@ -136,7 +143,7 @@ const OverlayPopup = () => {
   )
 }
 
-const RegisterDept = () => {
+const UpdateDept = () => {
   return (
     <>
       {ReactDOM.createPortal(
@@ -152,4 +159,4 @@ const RegisterDept = () => {
   )
 }
 
-export default RegisterDept
+export default UpdateDept

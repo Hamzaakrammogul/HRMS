@@ -17,3 +17,4 @@ export { default as Unauthorized } from './Unauthorized'
 export {default as Department} from './Department'
 export {default as DepartmentDetails} from './DepartmentDetails';
 export {default as RegisterDept} from './RegisterDept';
+export {default as UpdateDept} from './UpdateDept'

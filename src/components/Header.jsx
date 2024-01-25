@@ -3,8 +3,12 @@ import { CiSearch } from 'react-icons/ci';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import dateFormat from 'dateformat';
 import dp from '/img/dp.png'
+import userAuth from '../hooks/userAuth';
 
 const Header = () => {
+
+    const {auth} = userAuth();
+
     let newDate = new Date()
     const today = dateFormat(newDate, "dddd, dS mmmm  yyyy");
     let name = "Mr.Hamza"
@@ -20,7 +24,7 @@ const Header = () => {
                 </div>
                 <div className='w-1/3 flex place-content-end space-x-10 items-center'>
                     <div className='text-textDusty'><MdOutlineNotificationsActive size={24} /></div>
-                    <div><h1 className='text-lg text-textDusty font-semibold'>Hello, {name}! </h1></div>
+                    <div><h1 className='text-lg text-textDusty font-semibold'>Hello, Mr.{auth?.user?.name}! </h1></div>
                     <div className='w-12 h-12 overflow-hidden rounded-full'><img src={dp} alt='user-picture' /></div>
                 </div>
             </div>

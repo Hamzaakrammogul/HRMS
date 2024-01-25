@@ -9,7 +9,7 @@ import NotificationPopUp from '../ui/NotificationPopUp'
 
 const EmployeeDetail = () => {
   const { id } = useParams()
-  const { userData, auth } = userAuth()
+  const { userData, auth, notify, setNotify } = userAuth()
   const [success, setSuccess] = useState()
   const [loading, setLoading] = useState()
   const data = userData?.filter(obj => {
@@ -21,9 +21,9 @@ const EmployeeDetail = () => {
 
     let axiosConfig = {
       headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Access-Control-Allow-Origin': '*',
-        Authentication: `Bearer${JWT}`
+        // 'Content-Type': 'application/json;charset=UTF-8',
+        // 'Access-Control-Allow-Origin': '*',
+        Authorization: `Bearer${JWT}`
       }
     }
     try {
@@ -46,7 +46,10 @@ const EmployeeDetail = () => {
   console.log(data)
 
   const navigate = useNavigate()
-
+  if (notify === false) {
+    navigate('/main/employee')
+    setNotify('')
+  }
   return (
     <div className=''>
       <div className='flex mt-10'>
@@ -118,15 +121,17 @@ const EmployeeDetail = () => {
           >
             Edit Details
           </Button>
-          <Button onClick={onDeleteHandler} className='bg-bgBlue'>
-            {loading ? <Spinner className='w-4 h-4 mx-8'/> : ' Delete User'}
+          <Button onClick={onDeleteHandler} className='bg-red-400'>
+            {loading ? <Spinner className='w-4 h-4 mx-8' /> : ' Delete User'}
           </Button>
         </div>
       </div>
       {success === true ? (
         <NotificationPopUp description={'Employee deleted successfuly :)'} />
       ) : success === false ? (
-        <NotificationPopUp description={'Something went Wrong! :('} />
+        <NotificationPopUp
+          description={'Something went wrong, please try again later! :('}
+        />
       ) : (
         ''
       )}
