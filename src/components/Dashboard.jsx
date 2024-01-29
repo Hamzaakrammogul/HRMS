@@ -68,7 +68,7 @@ const Dashboard = () => {
               <span className='font-semibold'>{'Active'}</span>
             </div>
             <div className='flex flex-col w-[80%] h-16 bg-dusty rounded-md px-5 pt-2'>
-              <span className='text-textDusty'>Current Sa;ary</span>
+              <span className='text-textDusty'>Current Salary</span>
               <span className='font-semibold'>{'100,000'}</span>
             </div>
           </div>

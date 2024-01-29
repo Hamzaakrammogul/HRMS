@@ -8,6 +8,7 @@ export const ContextProvider = ({ children }) => {
   const [userData, setData] = useState()
   const [deptData, setDeptData] = useState()
   const [notify, setNotify] = useState()
+  const [req, setReq] = useState({})
   return (
     <AuthContext.Provider
       value={{
@@ -18,7 +19,9 @@ export const ContextProvider = ({ children }) => {
         deptData,
         setDeptData,
         notify,
-        setNotify
+        setNotify,
+        req,
+        setReq
       }}
     >
       {children}

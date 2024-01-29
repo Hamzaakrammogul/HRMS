@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import { Button } from '@material-tailwind/react'
+import { Button, Spinner } from '@material-tailwind/react'
 import { useNavigate } from 'react-router-dom'
+import userAuth from '../hooks/userAuth'
+import axios from './api/axios'
+import NotificationPopUp from '../ui/NotificationPopUp'
 
 const Overlay = () => {
   return <div className='w-full absolute h-screen bg-black bg-opacity-30' />
@@ -9,10 +12,46 @@ const Overlay = () => {
 
 const OverlayPopup = () => {
   const navigate = useNavigate()
+  const { auth, notify, setNotify } = userAuth()
+  const [data, setData] = useState()
+  const [loading, setLoading] = useState()
+  const [success, setSuccess] = useState()
+  const token = auth.myToken
+  const eid = auth.user._id
 
-  const onSubmitHandler = e => {
+  const onSubmitHandler = async e => {
     e.preventDefault()
+    setLoading(true)
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+    const PutData = {
+      data: {
+        subject: data.subject,
+        description: data.description,
+        status: '0'
+      }
+    }
+    console.log(PutData)
+    try {
+      const response = await axios.put(
+        `/employee/correction/req/add?eid=${eid}`,
+        PutData,
+        config
+      )
+      setSuccess(true)
+      setLoading(false)
+    } catch (error) {
+      console.error(error)
+      setSuccess(false)
+      setLoading(false)
+    }
+  }
+  if (notify === false) {
     navigate('/main/request')
+    setNotify('')
   }
   return (
     <div className='flex  justify-center items-center mt- bg-transparent  '>
@@ -23,6 +62,7 @@ const OverlayPopup = () => {
               Subject
             </label>
             <input
+              onChange={e => setData({ subject: e.target.value })}
               id='subject'
               type='text'
               placeholder='Enter Subject'
@@ -32,6 +72,7 @@ const OverlayPopup = () => {
               Correction Request
             </label>
             <textarea
+              onChange={e => setData({ ...data, description: e.target.value })}
               id='addrequest'
               type='textarea'
               placeholder='Type here'
@@ -39,11 +80,24 @@ const OverlayPopup = () => {
             />
             <div className='mt-10'>
               <Button type='submit' className='bg-bgBlue'>
-                Send Request
+                {loading ? (
+                  <Spinner className='w-4 h-4 mx-8' />
+                ) : (
+                  '  Send Request'
+                )}
               </Button>
             </div>
           </form>
         </div>
+        {success === true ? (
+          <NotificationPopUp description={'Request sent successfully :)'} />
+        ) : success === false ? (
+          <NotificationPopUp
+            description={'Something went wrong please try again later :('}
+          />
+        ) : (
+          ''
+        )}
       </div>
     </div>
   )

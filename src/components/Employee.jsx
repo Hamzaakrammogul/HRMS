@@ -8,15 +8,15 @@ import axios from './api/axios.js'
 import userAuth from '../hooks/userAuth.jsx'
 import Img from '../../public/img/dp.png'
 const Employee = () => {
-  const {userData, setData} = userAuth()
+  const { userData, setData } = userAuth()
   useEffect(() => {
-    apidata();
+    apidata()
   }, [])
 
   const apidata = async () => {
     try {
-      const response = await axios.get('/employee');
-      const resData= response?.data?.myEmployee
+      const response = await axios.get('/employee')
+      const resData = response?.data?.myEmployee
       setData(resData)
     } catch (error) {
       console.error(error)
@@ -78,16 +78,16 @@ const Employee = () => {
             key={item.index}
             id={item._id}
             Name={item.name}
-            position={"software Engineer"}
-            doj={"2023-11-06"}
+            position={'software Engineer'}
+            doj={'2023-11-06'}
             phone={item.contact}
             email={item.email}
             img={Img}
-            office={"Gulberg Office"}
-            empNo={"Emp-0001"}
-            status={"Active"}
-            department={"Engineering Department"}
-            salary={"100,000"}
+            office={'Gulberg Office'}
+            empNo={'Emp-0001'}
+            status={'Active'}
+            department={'Engineering Department'}
+            salary={'100,000'}
           />
         ))}
       </div>

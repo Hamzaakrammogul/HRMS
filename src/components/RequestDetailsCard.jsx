@@ -4,6 +4,7 @@ import { Button } from '@material-tailwind/react'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { requestData } from '../utils/data'
+import userAuth from '../hooks/userAuth'
 
 const Overlay = () => {
   return <div className='w-full absolute h-screen bg-black bg-opacity-30' />
@@ -11,15 +12,15 @@ const Overlay = () => {
 
 const OverlayPopup = () => {
   const navigate = useNavigate()
-
+  const { auth, req } = userAuth()
   const onSubmitHandler = e => {
     e.preventDefault()
     navigate('/main/request')
   }
 
   const { id } = useParams()
-  const data = requestData.filter(obj => {
-    return obj.id == id
+  const data = req?.data?.filter(obj => {
+    return obj._id == id
   })
   return (
     <div className='flex  justify-center items-center mt- bg-transparent  '>
@@ -38,7 +39,7 @@ const OverlayPopup = () => {
             <div className='bg-dusty px-2 py-2 w-[80%] text-sm font-semibold break-words outline-none h-[200px]  '>
               {data[0].description}
             </div>
-            <div className='mt-10'>
+            <div className={`${auth.user.role === 0 ? 'hidden' : ''}   mt-10`}>
               <Button type='submit' className='bg-green-500 '>
                 Resolve
               </Button>

@@ -18,10 +18,10 @@ const RequestCard = ({ id, username, status, subject, img }) => {
       </div>
       <div
         className={` ${
-          status === '0' ? 'text-orange-600' : 'text-green-600'
+          status === 0 ? 'text-orange-600' : 'text-green-600'
         } font-semibold bg-dusty px-5 py-2 rounded-md  items-center w-[20%] text-center`}
       >
-        {`${status === '0' ? 'Pending' : 'Resolved'}`}
+        {`${status === 0 ? 'Pending' : 'Resolved'}`}
       </div>
     </div>
   )

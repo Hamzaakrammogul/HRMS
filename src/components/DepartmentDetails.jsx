@@ -22,9 +22,6 @@ const DepartmentDetails = () => {
 
   const deleteHandle = async () => {
     setLoading(true)
-    // const params = {
-    //   id: id
-    // }
     const config = {
       headers: {
         Authorization: 'Bearer ' + token
@@ -42,9 +39,6 @@ const DepartmentDetails = () => {
   }
   const updateHandle = async () => {
     setLoading(true)
-    // const params = {
-    //   id: id
-    // }
     const config = {
       headers: {
         Authorization: 'Bearer ' + token
@@ -70,23 +64,25 @@ const DepartmentDetails = () => {
         <div className='flex flex-col space-y-2'>
           <h1 className='text-3xl text-bgBlue'>{newarray[0]?.name}</h1>
           <h1 className='text-xl text-textDusty'>
-            All the currently available departments
+            All the currently available Employees in this department
           </h1>
         </div>
         <div className='space-x-2'>
           {' '}
           <Button
-            onClick={()=>naviagte(`/main/departments/${id}/update-details`)}
+            onClick={() => naviagte(`/main/departments/${id}/add-employee`)}
             className='bg-bgBlue'
           >
-            Update Department
+            Add employee
+          </Button>
+          <Button
+            onClick={() => naviagte(`/main/departments/${id}/update-details`)}
+            className='bg-bgBlue'
+          >
+            Update Dept
           </Button>
           <Button onClick={deleteHandle} className='bg-red-400'>
-            {loading ? (
-              <Spinner className='w-4 h-4 mx-12' />
-            ) : (
-              'Delete Department'
-            )}
+            {loading ? <Spinner className='w-4 h-4 mx-8' /> : 'Delete Dept'}
           </Button>
         </div>
       </div>
