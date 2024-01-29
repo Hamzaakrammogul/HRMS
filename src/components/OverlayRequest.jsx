@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import userAuth from '../hooks/userAuth'
 import axios from './api/axios'
 import NotificationPopUp from '../ui/NotificationPopUp'
+import { CgCloseR } from 'react-icons/cg'
 
 const Overlay = () => {
   return <div className='w-full absolute h-screen bg-black bg-opacity-30' />
@@ -57,6 +58,15 @@ const OverlayPopup = () => {
     <div className='flex  justify-center items-center mt- bg-transparent  '>
       <div className='  w-[45%] absolute rounded-xl h-[500px] 2xl:h-[700px] bg-white mt-[50%] shadow-lg shadow-gray-300 overflow-hidden p-2 '>
         <div className='flex flex-col px-5'>
+          <div className='flex place-content-end  mt-5'>
+            <div
+              className=' cursor-pointer hover:text-red-400 '
+              onClick={() => navigate('/main/request/')}
+            >
+              <CgCloseR />
+            </div>
+          </div>
+          <div className='border  mt-5 mb-10' />
           <form onSubmit={onSubmitHandler} className='flex flex-col'>
             <label htmlFor='subject' className='text-textDusty'>
               Subject
