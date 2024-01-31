@@ -13,7 +13,7 @@ const Overlay = () => {
   return <div className='w-full absolute h-screen bg-black bg-opacity-30' />
 }
 
-const PopUp = ({ data, id }) => {
+const PopUp = ({ data, eid, did }) => {
   const { auth } = userAuth()
   const [data1, setData] = useState(data[0])
   console.log(data1)
@@ -38,11 +38,11 @@ const PopUp = ({ data, id }) => {
     }
     try {
       const response = await axios.put(
-        `/employee/update?id=${id}`,
+        `/employee/update?id=${eid}`,
         postData,
         axiosConfig
       )
-      navigate('/main/employee/' + id)
+      navigate(`/main/departments/${did}/employee/${id}`)
     } catch (error) {
       console.error(error)
     }
@@ -55,7 +55,7 @@ const PopUp = ({ data, id }) => {
             {/* <h1 className='text-2xl font-semibold'>{data[0].Name} Information</h1> */}
             <div
               className=' cursor-pointer hover:text-red-400 '
-              onClick={() => navigate('/main/employee/' + id)}
+              onClick={() => navigate(`/main/departments/${did}/employee/${eid}`)}
             >
               <CgCloseR />
             </div>
@@ -268,10 +268,10 @@ const PopUp = ({ data, id }) => {
 }
 
 const EditEmployeeDetails = () => {
-  const { id } = useParams()
+  const { eid, did } = useParams()
   const { userData } = userAuth()
   const data = userData.filter(obj => {
-    return obj._id == id
+    return obj._id == eid
   })
 
   return (
@@ -281,7 +281,7 @@ const EditEmployeeDetails = () => {
         document.getElementById('overlay-root')
       )}
       {ReactDOM.createPortal(
-        <PopUp data={data} id={id} />,
+        <PopUp data={data} eid={eid} did={did} />,
         document.getElementById('pop-up')
       )}
     </>

@@ -192,15 +192,15 @@ const OverlayPopup = () => {
               }
               id='moduleAccess'
               type='number'
-              placeholder='Enter contact number'
+              placeholder='Enter Access permissions'
               className='bg-dusty mb-5  w-[80%] h-10 px-2 rounded-md text-sm font-semibold outline-none'
             />
             <div className='mt-10'>
               <Button type='submit' className='bg-bgBlue'>
                 {loading ? (
-                  <Spinner className='w-4 h-4 mx-12' />
+                  <Spinner className='w-4 h-4 mx-10' />
                 ) : (
-                  'Update Department'
+                  'Add Employee'
                 )}
               </Button>
             </div>

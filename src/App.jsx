@@ -15,7 +15,9 @@ import {
   DepartmentDetails,
   RegisterDept,
   UpdateDept,
-  AddEmployee
+  AddEmployee,
+  DeptEmployeeDetails,
+  DeptEditEmployee
 } from './components'
 
 import { Route, RouterProvider } from 'react-router-dom'
@@ -33,19 +35,25 @@ const routesDefination = createRoutesFromElements(
         element={<MainPanel />}
         children={[
           <Route path='/main' element={<Dashboard />} />,
+          
           <Route path='/main/employee' element={<Employee />} />,
+
           <Route path='/main/employee/:id' element={<EmployeeDetail />} />,
+
           <Route
             path='/main/employee/:id/edit-details'
             element={<EditEmployeeDetails />}
           />,
           <Route path='/main/request' element={<MakeRequest />} />,
+
           <Route path='/main/request/:id' element={<RequestDetailsCard />} />,
+
           <Route
             path='/main/request/create-request'
             element={<OverlayRequest />}
           />,
           <Route path='/main/departments' element={<Department />} />,
+
           <Route
             path='/main/departments/:id'
             element={<DepartmentDetails />}
@@ -61,6 +69,14 @@ const routesDefination = createRoutesFromElements(
           <Route
             path='/main/departments/register-dept'
             element={<RegisterDept />}
+          />,
+          <Route
+            path='/main/departments/:did/employee/:eid'
+            element={<DeptEmployeeDetails />}
+          />,
+          <Route
+            path='/main/departments/:did/employee/:eid/edit'
+            element={<DeptEditEmployee />}
           />
         ]}
       />

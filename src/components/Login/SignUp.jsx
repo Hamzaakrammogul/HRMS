@@ -19,9 +19,6 @@ const SignUp = () => {
 
   const navigate = useNavigate()
 
-  // let isMounted = true
-  // const controller = new AbortController()
-
   const login = async () => {
     setLoading(true)
     var postData = {

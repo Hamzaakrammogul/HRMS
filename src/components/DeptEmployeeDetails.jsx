@@ -7,25 +7,26 @@ import Img from '../../public/img/dp.png'
 import axios from './api/axios'
 import NotificationPopUp from '../ui/NotificationPopUp'
 
-const EmployeeDetail = () => {
-  const { id } = useParams()
+const DeptEmployeeDetails = () => {
+  const { did, eid } = useParams()
   const { userData, auth, notify, setNotify } = userAuth()
   const [success, setSuccess] = useState()
   const [loading, setLoading] = useState()
-  const [data, setData]= useState([])
+  const [data, setData] = useState([])
+
   useEffect(() => {
-   datahandler();
-  },[])
+    datahandler()
+  }, [])
 
-  const datahandler= ()=>{
-  const data = userData?.filter(obj => {
-    return obj._id === id
-  })
-  setData(data);
-}
+  const datahandler = async () => {
+    const data = await userData?.filter(obj => {
+      return obj._id === eid
+    })
+    setData(data)
+  }
 
-console.log(data)
-  const did = 'id is missing for now'
+  console.log('This is data', data)
+
   const onDeleteHandler = async () => {
     const JWT = auth.myToken
 
@@ -33,13 +34,13 @@ console.log(data)
       headers: {
         // 'Content-Type': 'application/json;charset=UTF-8',
         // 'Access-Control-Allow-Origin': '*',
-        Authorization: `Bearer${JWT}`
+        Authorization: 'Bearer ' + JWT
       }
     }
     try {
       setLoading(true)
-      const response = await axios.put(
-        `/employee/update${id}?did=${did}`,
+      const response = await axios.delete(
+        `/employee/delete?did=${did}&id=${eid}`,
         axiosConfig
       )
       setSuccess(true)
@@ -57,7 +58,7 @@ console.log(data)
 
   const navigate = useNavigate()
   if (notify === false) {
-    navigate('/main/employee')
+    navigate(`/main/departments/${did}`)
     setNotify('')
   }
   return (
@@ -126,14 +127,16 @@ console.log(data)
         {/* ${data[0].status === "Active" ? 'block' : 'hidden'} */}
         <div className={` space-x-2 mt-10`}>
           <Button
-            onClick={() => navigate(`/main/employee/${id}/edit-details`)}
+            onClick={() =>
+              navigate(`/main/departments/${did}/employee/${eid}/edit`)
+            }
             className='bg-bgBlue'
           >
             Edit Details
           </Button>
-          {/* <Button onClick={onDeleteHandler} className='bg-red-400'>
+          <Button onClick={onDeleteHandler} className='bg-red-400'>
             {loading ? <Spinner className='w-4 h-4 mx-8' /> : ' Delete User'}
-          </Button> */}
+          </Button>
         </div>
       </div>
       {success === true ? (
@@ -148,4 +151,4 @@ console.log(data)
     </div>
   )
 }
-export default EmployeeDetail
+export default DeptEmployeeDetails

@@ -19,3 +19,5 @@ export { default as DepartmentDetails } from './DepartmentDetails';
 export { default as RegisterDept } from './RegisterDept';
 export { default as UpdateDept } from './UpdateDept';
 export { default as AddEmployee } from './AddEmployee';
+export { default as DeptEmployeeDetails } from './DeptEmployeeDetails'
+export { default as DeptEditEmployee } from './DeptEditEmployee'
