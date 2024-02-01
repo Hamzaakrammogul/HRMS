@@ -6,27 +6,26 @@ import axios from './api/axios'
 import { useNavigate } from 'react-router-dom'
 import NotificationPopUp from '../ui/NotificationPopUp'
 import Img from '../../public/img/dp.png'
-import EmployeeCard from '../ui/EmployeeCard'
 import DeptEmployeeCard from '../ui/DeptEmployeeCard'
 
 const DepartmentDetails = () => {
+  const { deptData, auth, notify, setNotify, userData, setData } = userAuth()
+
   useEffect(() => {
     employeeFun()
   }, [])
 
-  const { deptData, auth, notify, setNotify } = userAuth()
   const { id } = useParams()
   console.log(id)
   const [loading, setLoading] = useState()
   const [success, setSuccess] = useState('')
-  const [userData, setUserData] = useState()
+  const [userData1, setUserData] = useState()
 
   const naviagte = useNavigate()
 
   const newarray = deptData?.filter(obj => {
     return obj._id === id
   })
-  console.log(newarray[0]?.EID)
   const EID = newarray[0]?.EID
 
   const token = auth.myToken
@@ -35,6 +34,7 @@ const DepartmentDetails = () => {
     try {
       const response = await axios.get('/employee')
       const data = response?.data?.myEmployee
+      setData(data);
       const filteredres = data?.filter(employee => EID.includes(employee._id))
       setUserData(filteredres)
     } catch (error) {
@@ -109,7 +109,7 @@ const DepartmentDetails = () => {
         </div>
       </div>
       <div className='flex mt-10 mb-10 flex-wrap gap-6 ml-4'>
-        {userData?.map(item => (
+        {userData1?.map(item => (
           <DeptEmployeeCard
             key={item.index}
             id={item._id}
@@ -122,7 +122,7 @@ const DepartmentDetails = () => {
             img={Img}
             office={'Gulberg Office'}
             empNo={'Emp-0001'}
-            status={'Active'}
+            status={item.status}
             department={'Engineering Department'}
             salary={'100,000'}
           />

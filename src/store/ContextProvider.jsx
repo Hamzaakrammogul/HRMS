@@ -9,6 +9,7 @@ export const ContextProvider = ({ children }) => {
   const [deptData, setDeptData] = useState()
   const [notify, setNotify] = useState()
   const [req, setReq] = useState({})
+
   return (
     <AuthContext.Provider
       value={{

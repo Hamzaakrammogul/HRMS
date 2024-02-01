@@ -27,24 +27,20 @@ const EmployeeCard = ({
             <img src={img} alt='employee-img' />
             <span
               className={`absolute w-4 h-4 -mt-28 ml-2 rounded-full border ${
-                status === 'Active'
+                status === 0
                   ? 'bg-green-400'
-                  : status === 'Relieved'
-                  ? 'bg-red-500'
-                  : status === 'Notice period'
-                  ? 'bg-orange-400'
+                  : status === 1
+                  ? 'bg-red-400'
                   : ''
               }`}
             />
           </div>
           <p
             className={`${
-              status === 'Active'
+              status === 0
                 ? 'text-green-400'
-                : status === 'Relieved'
+                : status === 1
                 ? 'text-red-500'
-                : status === 'Notice period'
-                ? 'text-orange-400'
                 : ''
             } text-md text-center font-semibold `}
           >

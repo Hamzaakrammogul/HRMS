@@ -1,11 +1,11 @@
 import { Button, Spinner } from '@material-tailwind/react'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 import userAuth from '../../hooks/userAuth'
 import useStateRef from 'react-usestateref'
 const SignUp = () => {
-  const { setAuth, auth } = userAuth()
+  const { setAuth, auth, setData, userData } = userAuth()
   const [loading, setLoading] = useState()
   const [email, setEmail] = useState()
   const [pswd, setPswd] = useState()
@@ -18,7 +18,19 @@ const SignUp = () => {
   const pValid = useRef()
 
   const navigate = useNavigate()
+  useEffect(() => {
+    apidata()
+  }, [userData])
 
+  const apidata = async () => {
+    try {
+      const response = await axios.get('/employee')
+      const resData = response?.data?.myEmployee
+      setData(resData)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   const login = async () => {
     setLoading(true)
     var postData = {
@@ -139,7 +151,9 @@ const SignUp = () => {
               type='email'
               required
               className={`w-full p-3 rounded-xl border  focus:border-gray-400 focus:outline-none focus:ring-2 ${
-                emailValid === false && loading === false ? 'border-red-400' : 'border-gray-600'
+                emailValid === false && loading === false
+                  ? 'border-red-400'
+                  : 'border-gray-600'
               }`}
             />
 
@@ -160,7 +174,9 @@ const SignUp = () => {
               type='password'
               required
               className={` ${
-                pswdValid === false && loading === false ? 'border-red-400' : 'border-gray-600'
+                pswdValid === false && loading === false
+                  ? 'border-red-400'
+                  : 'border-gray-600'
               } w-full p-3 rounded-xl border focus:border-gray-400 focus:outline-none focus:ring-2`}
             />
 

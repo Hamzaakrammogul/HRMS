@@ -6,12 +6,14 @@ import userAuth from '../hooks/userAuth'
 import Img from '../../public/img/dp.png'
 import axios from './api/axios'
 import NotificationPopUp from '../ui/NotificationPopUp'
+import Toggle from '../ui/Toggle'
 
 const DeptEmployeeDetails = () => {
   const { did, eid } = useParams()
   const { userData, auth, notify, setNotify } = userAuth()
   const [success, setSuccess] = useState()
   const [loading, setLoading] = useState()
+  const [initialState, setInitialState] = useState()
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -25,6 +27,11 @@ const DeptEmployeeDetails = () => {
     setData(data)
   }
 
+  if(data[0]?.status===0){
+   ()=> setInitialState(true);
+  }else{
+    () =>setInitialState(false)
+  }
   console.log('This is data', data)
 
   const onDeleteHandler = async () => {
@@ -63,8 +70,9 @@ const DeptEmployeeDetails = () => {
   }
   return (
     <div className=''>
-      <div className='flex mt-10'>
+      <div className='flex justify-between mt-10'>
         <h1 className='text-3xl text-bgBlue font-semibold'>Employee Profile</h1>
+        <Toggle initialState ={initialState}/>
       </div>
 
       <div className='border  mt-5 mb-10' />

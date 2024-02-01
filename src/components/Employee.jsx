@@ -7,20 +7,8 @@ import axios from './api/axios.js'
 import userAuth from '../hooks/userAuth.jsx'
 import Img from '../../public/img/dp.png'
 const Employee = () => {
-  const { userData, setData } = userAuth()
-  useEffect(() => {
-    apidata()
-  }, [])
-
-  const apidata = async () => {
-    try {
-      const response = await axios.get('/employee')
-      const resData = response?.data?.myEmployee
-      setData(resData)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  const { userData } = userAuth()
+ 
   console.log(userData)
   return (
     <div className='contanier mx-auto mt-10 mb-7 2xl:mb-0'>
@@ -84,7 +72,7 @@ const Employee = () => {
             img={Img}
             office={'Gulberg Office'}
             empNo={'Emp-0001'}
-            status={'Active'}
+            status={item.status}
             department={'Engineering Department'}
             salary={'100,000'}
           />

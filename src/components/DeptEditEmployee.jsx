@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ReactDOM from 'react-dom'
 import { Button } from '@material-tailwind/react'
-import { employeeData } from '../utils/data'
 import { useNavigate } from 'react-router-dom'
 import { TbEdit } from 'react-icons/tb'
 import { CgCloseR } from 'react-icons/cg'
@@ -55,7 +54,9 @@ const PopUp = ({ data, eid, did }) => {
             {/* <h1 className='text-2xl font-semibold'>{data[0].Name} Information</h1> */}
             <div
               className=' cursor-pointer hover:text-red-400 '
-              onClick={() => navigate(`/main/departments/${did}/employee/${eid}`)}
+              onClick={() =>
+                navigate(`/main/departments/${did}/employee/${eid}`)
+              }
             >
               <CgCloseR />
             </div>
