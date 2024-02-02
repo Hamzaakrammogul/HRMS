@@ -21,3 +21,4 @@ export { default as UpdateDept } from './UpdateDept';
 export { default as AddEmployee } from './AddEmployee';
 export { default as DeptEmployeeDetails } from './DeptEmployeeDetails'
 export { default as DeptEditEmployee } from './DeptEditEmployee'
+export { default as AddDesignation } from './AddDesignation'

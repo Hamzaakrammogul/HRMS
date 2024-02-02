@@ -17,7 +17,8 @@ import {
   UpdateDept,
   AddEmployee,
   DeptEmployeeDetails,
-  DeptEditEmployee
+  DeptEditEmployee,
+  AddDesignation
 } from './components'
 
 import { Route, RouterProvider } from 'react-router-dom'
@@ -35,7 +36,7 @@ const routesDefination = createRoutesFromElements(
         element={<MainPanel />}
         children={[
           <Route path='/main' element={<Dashboard />} />,
-          
+
           <Route path='/main/employee' element={<Employee />} />,
 
           <Route path='/main/employee/:id' element={<EmployeeDetail />} />,
@@ -77,6 +78,10 @@ const routesDefination = createRoutesFromElements(
           <Route
             path='/main/departments/:did/employee/:eid/edit'
             element={<DeptEditEmployee />}
+          />,
+          <Route
+            path='/main/departments/:did/employee/:eid/add'
+            element={<AddDesignation />}
           />
         ]}
       />

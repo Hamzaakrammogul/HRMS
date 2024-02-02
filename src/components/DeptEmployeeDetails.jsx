@@ -26,7 +26,7 @@ const DeptEmployeeDetails = () => {
     setData(data)
     if (data[0]?.status === 0) {
       setEnabled(true)
-    }else{
+    } else {
       setEnabled(false)
     }
   }
@@ -64,7 +64,7 @@ const DeptEmployeeDetails = () => {
     }
   }
 
-  if (enabled === false && data[0]?.status===0) {
+  if (enabled === false && data[0]?.status === 0) {
     onInActiveHandler()
   }
 
@@ -177,6 +177,14 @@ const DeptEmployeeDetails = () => {
           </Button>
           <Button onClick={onDeleteHandler} className='bg-red-400'>
             {loading ? <Spinner className='w-4 h-4 mx-8' /> : ' Delete User'}
+          </Button>
+          <Button
+            onClick={() =>
+              navigate(`/main/departments/${did}/employee/${eid}/add`)
+            }
+            className='bg-bgBlue'
+          >
+            Add designation
           </Button>
         </div>
       </div>

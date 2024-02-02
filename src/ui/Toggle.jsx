@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import { Switch } from '@headlessui/react'
 import userAuth from '../hooks/userAuth'
 
 export default function Toggle () {
-  const {enabled, setEnabled} = userAuth()
+  const { enabled, setEnabled } = userAuth()
 
   return (
     <div className=''>
@@ -20,7 +19,9 @@ export default function Toggle () {
             pointer-events-none inline-block h-[24px] w-[24px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
       </Switch>
-      <p>{enabled===true? "Working": enabled===false? "Relieved" : ''}</p>
+      <p>
+        {enabled === true ? 'Working' : enabled === false ? 'Relieved' : ''}
+      </p>
     </div>
   )
 }
