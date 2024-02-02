@@ -8,6 +8,7 @@ import { Spinner } from '@material-tailwind/react'
 import NotificationPopUp from '../ui/NotificationPopUp'
 import { useParams } from 'react-router-dom'
 import { CgCloseR } from 'react-icons/cg'
+
 const Overlay = () => {
   return <div className='w-full absolute h-screen bg-black bg-opacity-30' />
 }

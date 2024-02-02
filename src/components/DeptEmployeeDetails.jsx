@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Button, Spinner } from '@material-tailwind/react'
 import { useNavigate } from 'react-router-dom'
@@ -10,13 +10,12 @@ import Toggle from '../ui/Toggle'
 
 const DeptEmployeeDetails = () => {
   const { did, eid } = useParams()
-  const { userData, auth, notify, setNotify } = userAuth()
+  const { userData, auth, notify, setNotify, enabled, setEnabled } = userAuth()
   const [success, setSuccess] = useState()
   const [loading, setLoading] = useState()
-  const [initialState, setInitialState] = useState()
   const [data, setData] = useState([])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     datahandler()
   }, [])
 
@@ -25,22 +24,55 @@ const DeptEmployeeDetails = () => {
       return obj._id === eid
     })
     setData(data)
+    if (data[0]?.status === 0) {
+      setEnabled(true)
+    }else{
+      setEnabled(false)
+    }
   }
 
-  if(data[0]?.status===0){
-   ()=> setInitialState(true);
-  }else{
-    () =>setInitialState(false)
+  console.log('This is data', data[0]?.status)
+
+  const onInActiveHandler = async () => {
+    const JWT = auth.myToken
+
+    let axiosConfig = {
+      headers: {
+        Authorization: 'Bearer ' + JWT
+      }
+    }
+    try {
+      // setLoading(true)
+      const response = await axios.put(
+        `/employee/status/inactive?id=${eid}`,
+        '',
+        axiosConfig
+      )
+      if (response.status.Ok) {
+        console.log('Employee is Inactivated' + eid)
+      }
+      // setSuccess(true)
+      // setLoading(false)
+      setEnabled('')
+      // navigate('/main/employee/')
+    } catch (error) {
+      // setSuccess(false)
+      // navigate('/main/employee/')
+      console.error(error)
+      setEnabled('')
+      // setLoading(false)
+    }
   }
-  console.log('This is data', data)
+
+  if (enabled === false && data[0]?.status===0) {
+    onInActiveHandler()
+  }
 
   const onDeleteHandler = async () => {
     const JWT = auth.myToken
 
     let axiosConfig = {
       headers: {
-        // 'Content-Type': 'application/json;charset=UTF-8',
-        // 'Access-Control-Allow-Origin': '*',
         Authorization: 'Bearer ' + JWT
       }
     }
@@ -72,7 +104,8 @@ const DeptEmployeeDetails = () => {
     <div className=''>
       <div className='flex justify-between mt-10'>
         <h1 className='text-3xl text-bgBlue font-semibold'>Employee Profile</h1>
-        <Toggle initialState ={initialState}/>
+        {/*  */}
+        <Toggle />
       </div>
 
       <div className='border  mt-5 mb-10' />

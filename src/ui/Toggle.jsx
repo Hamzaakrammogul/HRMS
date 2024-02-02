@@ -2,15 +2,15 @@ import { useState } from 'react'
 import { Switch } from '@headlessui/react'
 import userAuth from '../hooks/userAuth'
 
-export default function Toggle ({initialState}) {
-  const { enabled, setEnabled } = useState(initialState)
+export default function Toggle () {
+  const {enabled, setEnabled} = userAuth()
 
   return (
     <div className=''>
       <Switch
         checked={enabled}
         onChange={setEnabled}
-        className={`${enabled ? 'bg-teal-700' : 'bg-red-400'}
+        className={`${enabled ? 'bg-green-700' : 'bg-red-400'}
           relative inline-flex h-[28px] w-[64px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
       >
         <span className='sr-only'>Use setting</span>
@@ -20,7 +20,7 @@ export default function Toggle ({initialState}) {
             pointer-events-none inline-block h-[24px] w-[24px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
       </Switch>
-      <p>{enabled ? 'Working' : 'Released'}</p>
+      <p>{enabled===true? "Working": enabled===false? "Relieved" : ''}</p>
     </div>
   )
 }
