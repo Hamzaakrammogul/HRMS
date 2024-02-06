@@ -30,7 +30,7 @@ const routesDefination = createRoutesFromElements(
     <Route path='/' element={<SignUp />} />
     <Route path='/unauthorized' element={<Unauthorized />} />
 
-    <Route element={<RequiredAuth allowedRoles={[0, 1, 2, 3]} />}>
+    <Route element={<RequiredAuth allowedRoles={[0,1,2,3]} />}>
       <Route
         path='/main'
         element={<MainPanel />}
