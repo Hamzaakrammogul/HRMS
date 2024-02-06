@@ -133,7 +133,7 @@ const OverlayPopup = () => {
   )
 }
 
-const RegisterDept = () => {
+const AddDesignation = () => {
   return (
     <>
       {ReactDOM.createPortal(
@@ -149,4 +149,4 @@ const RegisterDept = () => {
   )
 }
 
-export default RegisterDept
+export default AddDesignation;
